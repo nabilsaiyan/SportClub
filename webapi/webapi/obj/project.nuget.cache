@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tmFUUFKbcCmHk2C7o97y1tCqdkVLwPAuPpvP0+HVvrJAnEruvEe3t1ugDhDl11/0sVQ0hn57c5pjMe8kIC5q5w==",
+  "dgSpecHash": "PA/Zvo5PB+jfi0en2ZVS2JMVipc8CnSuGaTaYJznRJY8F8rXJBBm3dWoK8jQ3Q9d42zKZhqU2OoUslSmKYV1sA==",
   "success": true,
-  "projectFilePath": "D:\\.Net\\Gestion d un club de sport\\webapi\\webapi\\webapi.csproj",
+  "projectFilePath": "D:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -12,9 +12,10 @@ namespace webapi.DataLayer
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
-           
-        }
 
+        }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

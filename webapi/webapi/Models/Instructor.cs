@@ -8,8 +8,6 @@ namespace webapi.Models
     public class Instructor
     {
         public int InstructorId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public Speciality Speciality { get; set; }
         public int AccountId { get; set; }
         public Account Account { get; set; }

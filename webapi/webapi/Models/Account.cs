@@ -14,5 +14,7 @@ namespace webapi.Models
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Le mot de passe est faible")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 
 const useStyles = makeStyles({
@@ -25,6 +26,33 @@ const AddMaterial = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(status, name, description);
+
+        const data = {
+            "name": name,
+            "description": description,
+            "status": status
+        }
+
+        axios.post('/api/materials', { data },
+        {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+            }
+        })
+        .then(res => {
+            console.log(res)
+            /*if (!res.data.err) {
+                handleHide()
+            }*/
+        }, (err) => {
+            /*axios.post('/api/token')
+                .then(res => {
+                    localStorage.setItem('accessToken', res.data.accessToken)
+                    handleClick()
+                }, err => window.location = "/")*/
+        }).catch(err => {
+            console.log('err:', err)
+        })
     };
 
     return ( 

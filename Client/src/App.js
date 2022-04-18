@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
+import ListMaterial from './Pages/ListMaterial';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/AddMaterial">
           <AddMaterial />
+        </Route>
+        <Route path="/ListMaterial">
+          <ListMaterial />
         </Route>
         <Route path="*">
           <NotFound />

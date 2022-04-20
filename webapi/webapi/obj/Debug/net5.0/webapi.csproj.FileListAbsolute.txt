@@ -255,3 +255,4 @@ D:\.Net\SportClub\webapi\webapi\obj\Debug\net5.0\webapi.dll
 D:\.Net\SportClub\webapi\webapi\obj\Debug\net5.0\ref\webapi.dll
 D:\.Net\SportClub\webapi\webapi\obj\Debug\net5.0\webapi.pdb
 D:\.Net\SportClub\webapi\webapi\obj\Debug\net5.0\webapi.genruntimeconfig.cache
+D:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

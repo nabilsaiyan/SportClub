@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
 import ListMaterial from './Pages/ListMaterial';
+import ModifyMaterial from './Pages/ModifyMaterial';
+import SignUp from './Pages/SignUp';
+import SignIn from './Pages/SignIn';
 
 
 function App() {
@@ -22,6 +25,15 @@ function App() {
         </Route>
         <Route path="/ListMaterial">
           <ListMaterial />
+        </Route>
+        <Route path="/ModifyMaterial">
+          <ModifyMaterial />
+        </Route>
+        <Route path="/SignUp">
+          <SignUp />
+        </Route>
+        <Route path="/SignIn">
+          <SignIn />
         </Route>
         <Route path="*">
           <NotFound />

@@ -1,42 +1,54 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Button,CssBaseline ,TextField , Link,Grid ,Box,Typography,Container} from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
+
+const useStyles = makeStyles({
+    field: {
+      marginTop: 20,
+      marginBottom: 20,
+      display: 'block'
+    }
+  })
+
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignIn() {
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
+      login: data.get('login'),
       password: data.get('password'),
     });
+
+    
+    const data1 = {
+      login: data.get('login'),
+      password: data.get('password'),
+  }
+  
+  axios.post('https://localhost:44373/api/Accounts/', data1)
+  .then(res => {
+      console.log(res);
+      //history.push('/ListMaterial');
+      history.go(-1);
+
+      
+  }, (err) => {
+      console.log(err.message);
+  }).catch(err => {
+      console.log('err:', err)
+  })
   };
+
+let classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,46 +62,24 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign in
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              
+              <Grid item xs={12} className={classes.field}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="login"
+                  label="Login"
+                  name="login"
+                  autoComplete="login"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} >
                 <TextField
                   required
                   fullWidth
@@ -100,31 +90,25 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+              
             </Grid>
-            <Button
+            <Button className={classes.field}
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign In
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-end" >
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/SignUp" variant="body2">
+                  Don't have Account? Sign up
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

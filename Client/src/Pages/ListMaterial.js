@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 const ListMaterial = (props) => {
     
     useEffect(() => {
-        setMaterials([
+        /*setMaterials([
             {
                 "materialId": 1,
                 "name": "...Loading",
@@ -38,7 +38,7 @@ const ListMaterial = (props) => {
                 "description": "...Loading",
                 "status": "...Loading"
             }
-        ]);
+        ]);*/
         console.log("useEffect");
         console.log(props);
         
@@ -63,7 +63,10 @@ const ListMaterial = (props) => {
         const history = useHistory();
     
 
-    const removeItem = (id) => {
+    const removeItem = (event) => {
+        event.preventDefault()
+        let id = event.currentTarget.id
+        console.log("id:", id)
         axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
             console.log("res :")
             console.log(res);

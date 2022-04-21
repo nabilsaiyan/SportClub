@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj": {}
+    "D:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj": {
+    "D:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj",
+        "projectUniqueName": "D:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
         "projectName": "webapi",
-        "projectPath": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj",
-        "packagesPath": "C:\\Users\\nabil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\obj\\",
+        "projectPath": "D:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "D:\\.Net\\SportClub\\webapi\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nabil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.16, )"
@@ -54,6 +58,10 @@
               "target": "Package",
               "version": "[5.0.16, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.17.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
@@ -61,6 +69,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.17.0, )"
             }
           },
           "imports": [
@@ -81,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }

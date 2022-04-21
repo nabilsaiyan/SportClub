@@ -8,39 +8,32 @@ import ListMaterial from './Pages/ListMaterial';
 import ModifyMaterial from './Pages/ModifyMaterial';
 import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn';
+import {createBrowserHistory} from 'history';
+import {useHistory} from 'react-router-dom';
+
 
 
 function App() {
+  const historyInstance = createBrowserHistory();
+  const history = useHistory();
+
   return (
-  <Router>
-  <div className="App">
-    <Navbar />
-    <div className="content">
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/AddMaterial">
-          <AddMaterial />
-        </Route>
-        <Route path="/ListMaterial">
-          <ListMaterial />
-        </Route>
-        <Route path="/ModifyMaterial">
-          <ModifyMaterial />
-        </Route>
-        <Route path="/SignUp">
-          <SignUp />
-        </Route>
-        <Route path="/SignIn">
-          <SignIn />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </div>
-  </div>
+    
+    <Router history={historyInstance}>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/" render={(props) => <Home {...props} />} /> 
+            <Route path="/AddMaterial" render={(props) => <AddMaterial {...props} />} />
+            <Route exact path="/ListMaterial/" render={(props) => <ListMaterial {...props} />} />
+            <Route path="/ModifyMaterial" render={(props) => <ModifyMaterial {...props} />} />
+            <Route path="/SignUp" component={SignUp}/>
+            <Route path="/SignIn" component={SignIn}/>
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </div>
+      </div>
   </Router>
   );
 }

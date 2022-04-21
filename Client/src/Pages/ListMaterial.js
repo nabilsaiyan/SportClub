@@ -2,7 +2,8 @@ import { TableRow, TableCell, TableContainer, Paper, TableBody, Table, Container
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-//import fetch from "node-fetch";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
@@ -15,54 +16,60 @@ const useStyles = makeStyles({
     }
 });
 
-const ListMaterial = () => {
-
+const ListMaterial = (props) => {
+    
     useEffect(() => {
         setMaterials([
             {
-                "MatrerialId": 1,
+                "materialId": 1,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             },
             {
-                "MatrerialId": 2,
+                "materialId": 2,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             },
             {
-                "MatrerialId": 3,
+                "materialId": 3,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             }
         ]);
         console.log("useEffect");
+        console.log(props);
         
         axios.get("https://localhost:44373/api/Materials",)
-            .then(res => {
-                setMaterials(res.data);
-                console.log("res :")
-                console.log(res.data);
-            })
-            .catch(err => {
-                console.log("err")
-                console.log(err);
-            });
+        .then(res => {
+            setMaterials(res.data);
+            console.log("res :")
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log("err")
+            console.log(err);
+        });
     }, []);
+    
+    
 
-    const [materials, setMaterials] = useState([]);
+        const [materials, setMaterials] = useState([]);
+    
+        const classes = useStyles();
 
-    const classes = useStyles();
-
-    const arr = [1, 2, 3, 4, 5];
+        const history = useHistory();
+    
 
     const removeItem = (id) => {
         axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
             console.log("res :")
             console.log(res);
-            setMaterials(materials.filter(item => item.id !== Number(id)));
+           // let newMaterials = materials.filter(item => item.id !== Number(id));
+            //etMaterials(newMaterials);
+            setMaterials([...materials.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
                 console.log("err")
@@ -70,6 +77,15 @@ const ListMaterial = () => {
             });
 
     }
+
+    const editItem = (id) => {
+        console.log("editItem");
+       // props.match.params.id = {id : id};
+        console.log(props);
+        //props.history.push("/ModifyMaterial");
+        history.push("/ModifyMaterial/");
+    }
+
 
     return (
         <Container size="sm" >
@@ -89,13 +105,13 @@ const ListMaterial = () => {
                     <TableBody >
                         {materials.map((row) => (
                             <TableRow >
-                                <TableCell component="th" scope="row">
-                                    {row.materialId}
-                                </TableCell>
+                                <TableCell component="th" scope="row">{row.materialId}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.description}</TableCell>
                                 <TableCell align="right">{row.status}</TableCell>
-                                <TableCell align="right"><Button >Edit</Button></TableCell>
+                                <TableCell align="right"><Button id={row.materialId} onClick={(e) => {
+                                    editItem(e.currentTarget.id);
+                                }}>Edit</Button></TableCell>
                                 <TableCell align="right"><Button id={row.materialId} onClick={(e) => {
                                     removeItem(e.currentTarget.id);
                                 }}>Delete</Button></TableCell>

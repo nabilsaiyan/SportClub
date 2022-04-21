@@ -3,7 +3,6 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 
 
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
   })
 
 
-const AddMaterial = () => {
+const AddInstructor = () => {
     const history = useHistory();
     const [status, setStatus] = useState("Operational");
     const [name, setName] = useState("");
@@ -61,7 +60,7 @@ const AddMaterial = () => {
 
     return ( 
         <Container size="sm"> 
-            <h1>Add New Material</h1>
+            <h1>Add New Instructor</h1>
            <form onSubmit={handleSubmit}>
 
                 <TextField  className={classes.field}
@@ -102,4 +101,4 @@ const AddMaterial = () => {
      );
 }
  
-export default AddMaterial
+export default AddInstructor

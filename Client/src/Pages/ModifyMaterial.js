@@ -15,11 +15,11 @@ const useStyles = makeStyles({
   })
 
 
-const ModifyMaterial = () => {
+const ModifyMaterial = (props) => {
     useEffect(() => {
         
-        console.log("useEffect");
-        
+        console.log("useEffect Modify");
+        console.log(props);
         axios.get("https://localhost:44373/api/Materials/" + 3,)
             .then(res => {
                 setMaterials(res.data);
@@ -37,6 +37,11 @@ const ModifyMaterial = () => {
                 console.log(err);
             });
     }, []);
+
+    useEffect(() => {
+        console.log("useEffect heheee");
+        
+    });
 
     const history = useHistory();
     const [materials, setMaterials] = useState([]);

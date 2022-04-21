@@ -2,10 +2,9 @@ import { TableRow, TableCell, TableContainer, Paper, TableBody, Table, Container
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useNavigate } from 'react-router-dom';
 
-
+//import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     strong: {
@@ -60,7 +59,7 @@ const ListMaterial = (props) => {
     
         const classes = useStyles();
 
-        const history = useHistory();
+       // const history = useHistory();
     
 
     const removeItem = (event) => {
@@ -80,13 +79,16 @@ const ListMaterial = (props) => {
             });
 
     }
+    let navigate = useNavigate();
 
     const editItem = (id) => {
         console.log("editItem");
        // props.match.params.id = {id : id};
         console.log(props);
         //props.history.push("/ModifyMaterial");
-        history.push("/ModifyMaterial/");
+        //history.push("/ModifyMaterial/");
+        navigate('ModifyMaterial/');
+
     }
 
 

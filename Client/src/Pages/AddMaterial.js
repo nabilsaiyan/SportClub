@@ -2,7 +2,8 @@ import { Typography, TextField, Select, MenuItem, Button, Container } from "@mat
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
+//import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
 
@@ -17,12 +18,13 @@ const useStyles = makeStyles({
 
 
 const AddMaterial = () => {
-    const history = useHistory();
+   // const history = useHistory();
     const [status, setStatus] = useState("Operational");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
 
    const classes = useStyles();
+   let navigate = useNavigate();
 
     
 
@@ -50,7 +52,7 @@ const AddMaterial = () => {
             //history.push('/ListMaterial');
             //window.location.reload();
             //<Redirect to="/ListMaterial" />
-
+            navigate("/ListMaterial");
             
         }, (err) => {
             console.log(err.message);

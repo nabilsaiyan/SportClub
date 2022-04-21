@@ -2,7 +2,7 @@ import { Typography, TextField, Select, MenuItem, Button, Container } from "@mat
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 
 
@@ -43,7 +43,7 @@ const ModifyMaterial = (props) => {
         
     });
 
-    const history = useHistory();
+   // const history = useHistory();
     const [materials, setMaterials] = useState([]);
     const [status, setStatus] = useState("Operational");
     const [name, setName] = useState("");
@@ -72,7 +72,7 @@ const ModifyMaterial = (props) => {
     axios.put('https://localhost:44373/api/Materials/' + materials.materialId, data)
     .then(res => {
         console.log(res);
-        history.push('/ListMaterial');
+       // history.push('/ListMaterial');
         
     }, (err) => {
         console.log(err.message);

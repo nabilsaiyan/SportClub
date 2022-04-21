@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 const ListMaterial = (props) => {
     
     useEffect(() => {
-        /*setMaterials([
+        setMaterials([
             {
                 "materialId": 1,
                 "name": "...Loading",
@@ -37,15 +37,23 @@ const ListMaterial = (props) => {
                 "description": "...Loading",
                 "status": "...Loading"
             }
-        ]);*/
+        ]);
         console.log("useEffect");
         console.log(props);
         
         axios.get("https://localhost:44373/api/Materials",)
         .then(res => {
-            setMaterials(res.data);
-            console.log("res :")
-            console.log(res.data);
+            let result = [];
+            res.data.map(material => {
+                result.push({
+                    "materialId": material.materialId,
+                    "name": material.name,
+                    "description": material.description,
+                    "status": (material.status == 1) ? "Operational" : "Defective"
+                });
+            }
+            );
+            setMaterials(result);
         })
         .catch(err => {
             console.log("err")
@@ -59,18 +67,12 @@ const ListMaterial = (props) => {
     
         const classes = useStyles();
 
-       // const history = useHistory();
-    
-
     const removeItem = (event) => {
         event.preventDefault()
         let id = event.currentTarget.id
         console.log("id:", id)
         axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
             console.log("res :")
-            console.log(res);
-           // let newMaterials = materials.filter(item => item.id !== Number(id));
-            //etMaterials(newMaterials);
             setMaterials([...materials.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
@@ -82,12 +84,8 @@ const ListMaterial = (props) => {
     let navigate = useNavigate();
 
     const editItem = (id) => {
-        console.log("editItem");
-       // props.match.params.id = {id : id};
-        console.log(props);
-        //props.history.push("/ModifyMaterial");
-        //history.push("/ModifyMaterial/");
-        navigate('ModifyMaterial/');
+       console.log(props);
+       navigate('/ModifyMaterial/' + id);
 
     }
 

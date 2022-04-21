@@ -1,10 +1,8 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-//import { useHistory } from "react-router-dom";
-
-
 
 const useStyles = makeStyles({
     field: {
@@ -15,19 +13,19 @@ const useStyles = makeStyles({
   })
 
 
+
 const ModifyMaterial = (props) => {
+    const {id} = useParams();
     useEffect(() => {
         
-        console.log("useEffect Modify");
-        console.log(props);
-        axios.get("https://localhost:44373/api/Materials/" + 3,)
+        axios.get("https://localhost:44373/api/Materials/" + id,)
             .then(res => {
                 setMaterials(res.data);
                 console.log("res :")
                 console.log(res.data);
                 setName(res.data.name);
                 setDescription(res.data.description);
-                if(res.data == 1) 
+                if(res.data == 0) 
                     setStatus("Operational");
                 else
                     setStatus("Defective");
@@ -38,12 +36,8 @@ const ModifyMaterial = (props) => {
             });
     }, []);
 
-    useEffect(() => {
-        console.log("useEffect heheee");
-        
-    });
+    const navigate = useNavigate();
 
-   // const history = useHistory();
     const [materials, setMaterials] = useState([]);
     const [status, setStatus] = useState("Operational");
     const [name, setName] = useState("");
@@ -56,8 +50,6 @@ const ModifyMaterial = (props) => {
 
    const handleSubmit = (e) => {
     e.preventDefault();
-    //console.log(status, name, description);
-
     const data = {
         "materialId": materials.materialId,
         "name": name,
@@ -72,7 +64,7 @@ const ModifyMaterial = (props) => {
     axios.put('https://localhost:44373/api/Materials/' + materials.materialId, data)
     .then(res => {
         console.log(res);
-       // history.push('/ListMaterial');
+        navigate("/ListMaterial");
         
     }, (err) => {
         console.log(err.message);

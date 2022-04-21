@@ -16,42 +16,34 @@ const useStyles = makeStyles({
 });
 
 const ListMaterial = () => {
+    const [materials, setMaterials] = useState([]);
 
     useEffect(() => {
-        setMaterials([
+        /*setMaterials([
             {
-                "id": 1,
+                "MatrerialId": 1,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             },
             {
-                "id": 2,
+                "MatrerialId": 2,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             },
             {
-                "id": 3,
+                "MatrerialId": 3,
                 "name": "...Loading",
                 "description": "...Loading",
                 "status": "...Loading"
             }
-        ]);
+        ]);*/
         console.log("useEffect");
-        /* fetch("http://localhost:8080/api/Materials" , { 
-             method: "GET",
-             headers: {
-                 "Content-Type": "application/json" 
-                 } 
-          }).then(res => res.json()).then(data => { console.log(data); });*/
-        axios.get("https://localhost:44373/api/Materials", /*{
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("accessToken")
-            }
-        }*/)
+
+        axios.get("https://localhost:44373/api/Materials",)
             .then(res => {
-                //setMaterials(res.data);
+                setMaterials(res.data);
                 console.log("res :")
                 console.log(res.data);
             })
@@ -59,23 +51,29 @@ const ListMaterial = () => {
                 console.log("err")
                 console.log(err);
             });
-    }, []);
+    }, [materials]);
 
-    const [materials, setMaterials] = useState([]);
 
     const classes = useStyles();
 
     const arr = [1, 2, 3, 4, 5];
 
-    const removeItem = (id) => {
-        setMaterials(materials.filter(item => item.id !== Number(id)));
-        /*console.log(id);
-        console.log(materials.filter((item) => {
-            return item.id !== id;
-        }));*/
-        /* console.log(arr);
-         console.log(arr.filter((item) => item !== 2));*/
-        /*console.log(materials.filter(item => item.id !== Number(id)));*/
+    const removeItem = (event) => {
+        event.preventDefault()
+        let id = event.currentTarget.id
+        console.log("id:", id)
+        axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
+            console.log("res :")
+            console.log(res);
+            let newMats = materials.filter(item => item.id !== Number(id))
+            console.log("new mats :" + newMats)
+            setMaterials(newMats);
+        })
+            .catch(err => {
+                console.log("err")
+                console.log(err);
+            });
+
     }
 
     return (
@@ -97,15 +95,13 @@ const ListMaterial = () => {
                         {materials.map((row) => (
                             <TableRow >
                                 <TableCell component="th" scope="row">
-                                    {row.id}
+                                    {row.materialId}
                                 </TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.description}</TableCell>
                                 <TableCell align="right">{row.status}</TableCell>
                                 <TableCell align="right"><Button >Edit</Button></TableCell>
-                                <TableCell align="right"><Button id={row.id} onClick={(e) => {
-                                    removeItem(e.currentTarget.id);
-                                }}>Delete</Button></TableCell>
+                                <TableCell align="right"><Button id={row.materialId} onClick={removeItem}>Delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

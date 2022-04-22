@@ -17,6 +17,6 @@ namespace webapi.DataLayer
         public DbSet<Material> Materials { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<webapi.Models.Instructor> Instructor { get; set; }
+        public DbSet<Instructor> Instructor { get; set; }
     }
 }

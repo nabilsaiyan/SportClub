@@ -25,7 +25,7 @@ namespace webapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Instructor>>> GetInstructor()
         {
-            return await _context.Instructor.ToListAsync();
+            return await _context.Instructor.Include("Account").Include("Account/Role").ToListAsync();
         }
 
         // GET: api/Instructors/5
@@ -78,6 +78,10 @@ namespace webapi.Controllers
         [HttpPost]
         public async Task<ActionResult<Instructor>> PostInstructor(Instructor instructor)
         {
+            if(instructor.Account.Role != null)
+            {
+                _context.Entry(instructor.Account.Role).State = EntityState.Unchanged;
+            }
             _context.Instructor.Add(instructor);
             await _context.SaveChangesAsync();
 

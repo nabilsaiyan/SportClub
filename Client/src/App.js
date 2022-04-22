@@ -1,47 +1,44 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+//import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
 import ListMaterial from './Pages/ListMaterial';
 import ModifyMaterial from './Pages/ModifyMaterial';
-import SignUp from './Pages/signup';
-import SignIn from './Pages/signin';
+import SignUp from './Pages/SignUp';
+import SignIn from './Pages/SignIn';
+import AddInstructor from './Pages/AddInstructor';
+import {createBrowserHistory} from 'history';
+//import {useHistory} from 'react-router-dom';
+
 
 
 function App() {
+  const historyInstance = createBrowserHistory();
+  //const history = useHistory();
+
   return (
-    <Router>
+   
+    <BrowserRouter>
       <div className="App">
         <Navbar />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/AddMaterial">
-              <AddMaterial />
-            </Route>
-            <Route path="/ListMaterial">
-              <ListMaterial />
-            </Route>
-            <Route path="/ModifyMaterial">
-              <ModifyMaterial />
-            </Route>
-            <Route path="/SignUp">
-              <SignUp />
-            </Route>
-            <Route path="/SignIn">
-              <SignIn />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={ <Home  />} /> 
+            <Route path="/AddMaterial" element={<AddMaterial  />} />
+            <Route exact path="/ListMaterial/" element={ <ListMaterial  />} />
+            <Route path="/ModifyMaterial" element={ <ModifyMaterial  />} />
+            <Route path="/SignUp" element={SignUp}/>
+            <Route path="/SignIn" element={SignIn}/>
+            <Route path="/AddInstructor" element={AddInstructor}/>
+            <Route path="*" element={NotFound} />
+          </Routes>
         </div>
       </div>
-    </Router>
+  </BrowserRouter>
   );
 }
 

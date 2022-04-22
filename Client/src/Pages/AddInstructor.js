@@ -2,9 +2,7 @@ import { Typography, TextField, Select, MenuItem, Button, Container } from "@mat
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useNavigate } from "react-router";
 //import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 
 
@@ -17,14 +15,13 @@ const useStyles = makeStyles({
   })
 
 
-const AddMaterial = () => {
-   // const history = useHistory();
-    const [status, setStatus] = useState("Operational");
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
+const AddInstructor = () => {
+    //const history = useHistory();
+    const [speciality, setSpeciality] = useState("Football");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
 
    const classes = useStyles();
-   let navigate = useNavigate();
 
     
 
@@ -34,15 +31,18 @@ const AddMaterial = () => {
         //console.log(status, name, description);
 
         const data = {
-            "name": name,
-            "description": description,
-            "status": 1
+            "login": login,
+            "password": password,
+            "speciality": 0
         }
-        if(status == "Operational")
-            data.status = 1;
+         
+        if(speciality == "Football")
+            data.speciality = 1;
+        else if (speciality == "Fitness")
+            data.speciality = 0;
         else
-            data.status = 0;
-        axios.post('https://localhost:44373/api/Materials/', data,
+            data.speciality = 2;
+        axios.post('https://localhost:44373/api/Instructor/', data,
             /*{   headers: {
                 Authorization: "Bearer " + localStorage.getItem("accessToken")
             } }  */)
@@ -52,7 +52,7 @@ const AddMaterial = () => {
             //history.push('/ListMaterial');
             //window.location.reload();
             //<Redirect to="/ListMaterial" />
-            navigate("/ListMaterial");
+
             
         }, (err) => {
             console.log(err.message);
@@ -63,40 +63,41 @@ const AddMaterial = () => {
 
     return ( 
         <Container size="sm"> 
-            <h1>Add New Material</h1>
+            <h1>Add New Instructor</h1>
            <form onSubmit={handleSubmit}>
 
                 <TextField  className={classes.field}
-                    label="Material Name"  
+                    label="Login"  
                     variant="outlined" 
                     color="secondary" 
                     fullWidth
                     required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}/>
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}/>
                 <TextField  className={classes.field}
-                    label="Material Description"
+                    label="Password"
                     variant="outlined" 
                     color="secondary" 
                     fullWidth
                     required
                     multiline 
                     minRows={5}
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     />
 
                 <Select  className={classes.field}
-                    label="Status"
-                    defaultValue="Operational"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
+                    label="Speciality"
+                    defaultValue="Football"
+                    value={speciality}
+                    onChange={(e) => setSpeciality(e.target.value)}
                 >
-                    <MenuItem value="Operational">Operational</MenuItem>
-                    <MenuItem value="Defective">Defective</MenuItem>
+                    <MenuItem value="Football">Football</MenuItem>
+                    <MenuItem value="Fitness">Fitness</MenuItem>
+                    <MenuItem value="Yoga">Yoga</MenuItem>
                 </Select>
 
-                <Button variant="outlined" color="primary" type="submit">Add Material</Button>
+                <Button variant="outlined" color="primary" type="submit">Add Instructor</Button>
 
             </form>
          </Container>
@@ -104,4 +105,4 @@ const AddMaterial = () => {
      );
 }
  
-export default AddMaterial
+export default AddInstructor

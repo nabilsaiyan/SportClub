@@ -3,7 +3,7 @@ import {Button,CssBaseline ,TextField , Link,Grid ,Box,Typography,Container} fro
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 
 
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 const theme = createTheme();
 
 export default function SignIn() {
-  const history = useHistory();
+  //const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,7 +38,7 @@ export default function SignIn() {
   .then(res => {
       console.log(res);
       //history.push('/ListMaterial');
-      history.go(-1);
+     // history.go(-1);
 
       
   }, (err) => {

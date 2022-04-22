@@ -103,6 +103,27 @@ namespace webapi.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("webapi.Models.Subscription", b =>
+                {
+                    b.Property<int>("SubscriptionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubscriptionId");
+
+                    b.ToTable("Subscriptions");
+                });
+
             modelBuilder.Entity("webapi.Models.Account", b =>
                 {
                     b.HasOne("webapi.Models.Role", "Role")

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 const ListInstructor = (props) => {
-    
+
     useEffect(() => {
         setInstrucors([
             {
@@ -28,32 +28,32 @@ const ListInstructor = (props) => {
         ]);
         console.log("useEffect");
         console.log(props);
-        
-        axios.get("https://localhost:44373/api/Instructors",)
-        .then(res => {
-            let result = [];
-            /*res.data.map(material => {
-                result.push({
-                    "materialId": material.materialId,
-                    "name": material.name,
-                    "description": material.description,
-                    "status": (material.status == 1) ? "Operational" : "Defective"
-                });
-            }
-            );*/
-            setInstrucors(result);
-        })
-        .catch(err => {
-            console.log("err")
-            console.log(err);
-        });
-    }, []);
-    
-    
 
-        const [Instructors, setInstrucors] = useState([]);
-    
-        const classes = useStyles();
+        axios.get("https://localhost:44373/api/Instructors",)
+            .then(res => {
+                let result = [];
+                /*res.data.map(material => {
+                    result.push({
+                        "materialId": material.materialId,
+                        "name": material.name,
+                        "description": material.description,
+                        "status": (material.status == 1) ? "Operational" : "Defective"
+                    });
+                }
+                );*/
+                setInstrucors(result);
+            })
+            .catch(err => {
+                console.log("err")
+                console.log(err);
+            });
+    }, []);
+
+
+
+    const [Instructors, setInstrucors] = useState([]);
+
+    const classes = useStyles();
 
     const removeItem = (event) => {
         event.preventDefault()
@@ -61,7 +61,7 @@ const ListInstructor = (props) => {
         console.log("id:", id)
         axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
             console.log("res :")
-            setMaterials([...materials.filter(item => item.id !== Number(id))]);
+            // setMaterials([...materials.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
                 console.log("err")
@@ -72,8 +72,8 @@ const ListInstructor = (props) => {
     let navigate = useNavigate();
 
     const editItem = (id) => {
-       console.log(props);
-       navigate('/ModifyInstructor/' + id);
+        console.log(props);
+        navigate('/ModifyInstructor/' + id);
 
     }
 
@@ -94,7 +94,7 @@ const ListInstructor = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody >
-                        {materials.map((row) => (
+                        {/* {materials.map((row) => (
                             <TableRow >
                                 <TableCell component="th" scope="row">{row.materialId}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
@@ -107,7 +107,7 @@ const ListInstructor = (props) => {
                                     removeItem(e.currentTarget.id);
                                 }}>Delete</Button></TableCell>
                             </TableRow>
-                        ))}
+                        ))} */}
                     </TableBody>
                 </Table>
             </TableContainer>

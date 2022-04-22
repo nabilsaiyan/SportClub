@@ -9,8 +9,8 @@ using webapi.DataLayer;
 namespace webapi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220418143659_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220422092559_my")]
+    partial class my
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -12,8 +12,6 @@ const useStyles = makeStyles({
     }
   })
 
-
-
 const ModifyMaterial = (props) => {
     const {id} = useParams();
     useEffect(() => {

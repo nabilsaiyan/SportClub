@@ -1,10 +1,8 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { useNavigate } from "react-router";
-
-
 
 const useStyles = makeStyles({
     field: {
@@ -15,13 +13,36 @@ const useStyles = makeStyles({
   })
 
 
-const AddInstructor = () => {
+
+const ModifyInstructor = (props) => {
+    const {id} = useParams();
+    useEffect(() => {
+        
+        axios.get("https://localhost:44373/api/Instructors/" + id,)
+            .then(res => {
+               /* setMaterials(res.data);
+                console.log("res :")
+                console.log(res.data);
+                setName(res.data.name);
+                setDescription(res.data.description);
+                if(res.data == 0) 
+                    setStatus("Operational");
+                else
+                    setStatus("Defective");*/
+            })
+            .catch(err => {
+                console.log("err")
+                console.log(err);
+            });
+    }, []);
+
+    const navigate = useNavigate();
+
     const [speciality, setSpeciality] = useState("Football");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
    const classes = useStyles();
-    const navigate = useNavigate();
     
 
 
@@ -56,7 +77,7 @@ const AddInstructor = () => {
 
     return ( 
         <Container size="sm"> 
-            <h1>Add New Instructor</h1>
+            <h1>Modify Instructor</h1>
            <form onSubmit={handleSubmit}>
 
                 <TextField  className={classes.field}
@@ -88,7 +109,7 @@ const AddInstructor = () => {
                     <MenuItem value="Yoga">Yoga</MenuItem>
                 </Select>
 
-                <Button variant="outlined" color="primary" type="submit">Add Instructor</Button>
+                <Button variant="outlined" color="primary" type="submit">Update Instructor</Button>
 
             </form>
          </Container>
@@ -96,4 +117,4 @@ const AddInstructor = () => {
      );
 }
  
-export default AddInstructor
+export default ModifyInstructor

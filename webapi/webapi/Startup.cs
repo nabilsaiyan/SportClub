@@ -62,7 +62,11 @@ namespace webapi
 
             services.AddScoped<IMaterialsRepository, MaterialsRepository>();
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(o =>
+            {
+                o.JsonSerializerOptions.IgnoreNullValues = true;
+                o.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "webapi", Version = "v1" });

@@ -2,17 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webapi.DataLayer;
 
 namespace webapi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220422092559_my")]
-    partial class my
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +41,26 @@ namespace webapi.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("webapi.Models.Instructor", b =>
+                {
+                    b.Property<int>("InstructorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Speciality")
+                        .HasColumnType("int");
+
+                    b.HasKey("InstructorId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("Instructor");
                 });
 
             modelBuilder.Entity("webapi.Models.Material", b =>
@@ -94,6 +112,17 @@ namespace webapi.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("webapi.Models.Instructor", b =>
+                {
+                    b.HasOne("webapi.Models.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }

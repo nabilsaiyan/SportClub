@@ -3,8 +3,6 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from "react-router";
-//import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 
 
@@ -18,7 +16,6 @@ const useStyles = makeStyles({
 
 
 const AddMaterial = () => {
-   // const history = useHistory();
     const [status, setStatus] = useState("Operational");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -31,7 +28,6 @@ const AddMaterial = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(status, name, description);
 
         const data = {
             "name": name,
@@ -48,10 +44,6 @@ const AddMaterial = () => {
             } }  */)
         .then(res => {
             console.log(res); 
-            //history.push("/ListMaterial");
-            //history.push('/ListMaterial');
-            //window.location.reload();
-            //<Redirect to="/ListMaterial" />
             navigate("/ListMaterial");
             
         }, (err) => {

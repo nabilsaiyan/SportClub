@@ -394,3 +394,4 @@ C:\Users\nabil\Desktop\Cours\Projet Tuteuré\SportClub\webapi\webapi\obj\Debug\n
 C:\Users\nabil\Desktop\Cours\Projet Tuteuré\SportClub\webapi\webapi\obj\Debug\net5.0\webapi.genruntimeconfig.cache
 C:\Users\nabil\Desktop\Cours\Projet Tuteuré\SportClub\webapi\webapi\obj\Debug\net5.0\ref\webapi.dll
 >>>>>>> dcb5d62cf8333167e049b143e8e7a5ec29053a32
+C:\Users\nabil\Desktop\Cours\Projet Tuteuré\SportClub\webapi\webapi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -16,22 +16,16 @@ const useStyles = makeStyles({
 });
 
 const ListInstructor = (props) => {
+    const [Instructors, setInstructors] = useState([]);
     
     useEffect(() => {
-        setInstrucors([
-            {
-                "materialId": 1,
-                "name": "...Loading",
-                "description": "...Loading",
-                "status": "...Loading"
-            }
-        ]);
         console.log("useEffect");
         console.log(props);
         
         axios.get("https://localhost:44373/api/Instructors",)
         .then(res => {
             let result = [];
+            setInstructors(res.data);
             /*res.data.map(material => {
                 result.push({
                     "materialId": material.materialId,
@@ -41,7 +35,6 @@ const ListInstructor = (props) => {
                 });
             }
             );*/
-            setInstrucors(result);
         })
         .catch(err => {
             console.log("err")
@@ -51,7 +44,6 @@ const ListInstructor = (props) => {
     
     
 
-        const [Instructors, setInstrucors] = useState([]);
     
         const classes = useStyles();
 
@@ -61,7 +53,7 @@ const ListInstructor = (props) => {
         console.log("id:", id)
         axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
             console.log("res :")
-            setMaterials([...materials.filter(item => item.id !== Number(id))]);
+            //setMaterials([...materials.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
                 console.log("err")
@@ -86,24 +78,24 @@ const ListInstructor = (props) => {
                     <TableHead >
                         <TableRow  >
                             <TableCell className={classes.strong}>Id</TableCell>
-                            <TableCell className={classes.strong} align="right">Material Name</TableCell>
-                            <TableCell className={classes.strong} align="right">Description</TableCell>
-                            <TableCell className={classes.strong} align="right">Status</TableCell>
+                            <TableCell className={classes.strong} align="right">Login</TableCell>
+                            <TableCell className={classes.strong} align="right">Password</TableCell>
+                            <TableCell className={classes.strong} align="right">Speciality</TableCell>
                             <TableCell className={classes.strong} align="right"></TableCell>
                             <TableCell className={classes.strong} align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody >
-                        {materials.map((row) => (
+                        {Instructors.map((row) => (
                             <TableRow >
-                                <TableCell component="th" scope="row">{row.materialId}</TableCell>
-                                <TableCell align="right">{row.name}</TableCell>
-                                <TableCell align="right">{row.description}</TableCell>
-                                <TableCell align="right">{row.status}</TableCell>
-                                <TableCell align="right"><Button id={row.materialId} onClick={(e) => {
+                                <TableCell component="th" scope="row">{row.instructorId}</TableCell>
+                                <TableCell align="right">{row.account.login}</TableCell>
+                                <TableCell align="right">{row.account.password}</TableCell>
+                                <TableCell align="right">{row.speciality}</TableCell>
+                                <TableCell align="right"><Button id={row.instructorId} onClick={(e) => {
                                     editItem(e.currentTarget.id);
                                 }}>Edit</Button></TableCell>
-                                <TableCell align="right"><Button id={row.materialId} onClick={(e) => {
+                                <TableCell align="right"><Button id={row.instructorId} onClick={(e) => {
                                     removeItem(e.currentTarget.id);
                                 }}>Delete</Button></TableCell>
                             </TableRow>

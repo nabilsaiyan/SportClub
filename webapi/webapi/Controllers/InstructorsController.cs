@@ -25,7 +25,7 @@ namespace webapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Instructor>>> GetInstructor()
         {
-            return await _context.Instructor.Include("Account").Include("Account/Role").ToListAsync();
+            return await _context.Instructor.Include("Account").Include("Account.Role").ToListAsync();
         }
 
         // GET: api/Instructors/5

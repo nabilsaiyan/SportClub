@@ -2,7 +2,7 @@
 
 namespace webapi.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class my : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

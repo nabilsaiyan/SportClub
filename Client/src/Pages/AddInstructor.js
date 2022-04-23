@@ -1,5 +1,5 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -19,40 +19,59 @@ const AddInstructor = () => {
     const [speciality, setSpeciality] = useState("Football");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-
+    const [role, setRole] = useState({});
    const classes = useStyles();
     const navigate = useNavigate();
     
+    
+  useEffect(() => {
+    
+    console.log("useEffect");
+
+    axios.get("https://localhost:44373/api/Roles/2" ,)
+    .then(res => {
+        setRole(res.data);
+        console.log(role);
+        
+    })
+    .catch(err => {
+        console.log("err")
+        console.log(err);
+    });
+}, []);
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = {
-            "login": login,
-            "password": password,
-            "speciality": 0
+       
+            let finalData = {
+               "speciality": speciality,
+               "account": {
+                 "login": login,
+                 "password": password,
+                 "roleId": role.roleId,
+                 "role": role
+               }
+             }
+             console.log(role);
+             console.log(finalData);
+           axios.post('https://localhost:44373/api/Instructors/', finalData,
+               /*{   headers: {
+                   Authorization: "Bearer " + localStorage.getItem("accessToken")
+               } }  */)
+           .then(res => {
+               console.log(res); 
+               navigate("/ListInstructor");
+               
+           }, (err) => {
+               console.log(err.message);
+           }).catch(err => {
+               console.log('err:', err)
+           })
+       
+
         }
-         
-        if(speciality == "Football")
-            data.speciality = 1;
-        else if (speciality == "Fitness")
-            data.speciality = 0;
-        else
-            data.speciality = 2;
-        axios.post('https://localhost:44373/api/Instructor/', data,
-            /*{   headers: {
-                Authorization: "Bearer " + localStorage.getItem("accessToken")
-            } }  */)
-        .then(res => {
-            console.log(res); 
-            navigate("/ListInstructor");
-            
-        }, (err) => {
-            console.log(err.message);
-        }).catch(err => {
-            console.log('err:', err)
-        })
-    };
 
     return ( 
         <Container size="sm"> 

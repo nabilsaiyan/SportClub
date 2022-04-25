@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
+.main {
+    background-image: url(../Images/bodybuilder.png);
+    background-size: cover;
+    height: 680px;
+    color : #fff;
+    text-align: left;
+}
+
+.main h1 {
+    font-size: 90px;
+    font-family: 'Oswald';
+    font-weight: 600;
+    width : 60%;
+}
+
+.div1 {
+    padding-top: 280px;
+    padding-left: 50px;
+}
+
+.div1 p {
+    font-size: 20px;
+    font-family: 'Rubik';
+    font-weight: 500;
+}
+
+.div1 .button1{
+    width: 150px;
+    background-color: #e50f0f;
+    left: 0;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Oswald';
+    font-weight: 600;
+    margin-top: 20px;
+}

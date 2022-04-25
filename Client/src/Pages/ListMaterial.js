@@ -64,6 +64,8 @@ const ListMaterial = (props) => {
                 );
                 load=true;
                 setMaterials(result);
+                //window.location.reload();
+
             })
             .catch(err => {
                 console.log("err")

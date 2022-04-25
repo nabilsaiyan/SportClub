@@ -4,41 +4,6 @@
 /* base styles */
 * {
   margin: 0;
-  font-family: "Rubik";
-  color: #333;
-}
-.navbar {
-    padding: 10px;
-  display: flex;
-  align-items: center;
-  /*max-width: 900px;*/
-  background: #303A53;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
-  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
-
-
+  font-family: 'Rubik';
 }
 
-.navbar h1 {
-  color: #ffffff;
-  margin-left: auto;
-}
-.navbar .links {
-  margin-left: auto;
-  margin-right: auto;
-}
-.navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-  color: #ffffff;
-}
-.navbar a:hover {
-  color: #1949b9;
-}
-.content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-}

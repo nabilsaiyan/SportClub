@@ -1,6 +1,6 @@
+import React from 'react';
+import { useState } from 'react';
 import './App.css';
-import Navbar from './Components/Navbar';
-import Home from './Components/Home';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
@@ -11,31 +11,36 @@ import SignIn from './Pages/SignIn';
 import AddInstructor from './Pages/AddInstructor';
 import ListInstructor from './Pages/ListInstructor';
 import ModifyInstructor from './Pages/ModifyInstructor';
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
 
-
+export const loginContext = React.createContext()
 
 function App() {
+  const [isLoggedin, setLoggedIn] = useState('false');
+
   return (
-   
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route exact path="/" element={ <Home  />} /> 
-            <Route path="/AddMaterial" element={<AddMaterial  />} />
-            <Route exact path="/ListMaterial/" element={ <ListMaterial  />} />
-            <Route path="/ModifyMaterial/:id" element={ <ModifyMaterial  />} />
-            <Route path="/SignUp" element={<SignUp  />}/>
-            <Route path="/SignIn" element={<SignIn  />}/>
-            <Route path="/AddInstructor" element={<AddInstructor  />}/>
-            <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
-            <Route exact path="/ModifyInstructor/" element={ <ModifyInstructor  />} />
-            <Route path="*" element={<NotFound  />} />
-          </Routes>
+    <loginContext.Provider value={{ isLoggedin, setLoggedIn }} >
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route exact path="/" element={ <Home  />} /> 
+              <Route path="/AddMaterial" element={<AddMaterial  />} />
+              <Route exact path="/ListMaterial/" element={ <ListMaterial  />} />
+              <Route path="/ModifyMaterial/:id" element={ <ModifyMaterial  />} />
+              <Route path="/SignUp" element={<SignUp  />}/>
+              <Route path="/SignIn" element={<SignIn  />}/>
+              <Route path="/AddInstructor" element={<AddInstructor  />}/>
+              <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
+              <Route exact path="/ModifyInstructor/" element={ <ModifyInstructor  />} />
+              <Route path="*" element={<NotFound  />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-  </BrowserRouter>
+    </BrowserRouter>
+  </loginContext.Provider>
   );
 }
 

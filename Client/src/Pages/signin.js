@@ -4,6 +4,8 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { loginContext } from '../App';
+import { useEffect, useContext } from 'react';
 
 
 
@@ -19,6 +21,11 @@ const useStyles = makeStyles({
 const theme = createTheme();
 
 export default function SignIn() {
+  const contextData = useContext(loginContext);
+  useEffect(() => {
+    contextData.setLoggedIn(false)
+  });
+
   let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,10 +44,9 @@ export default function SignIn() {
   axios.post('https://localhost:44373/api/Accounts/Login', data1)
   .then(res => {
       console.log(res);
+      contextData.setLoggedIn(true)
       localStorage.setItem('accessToken', res.data)
-      navigate('/');
-
-      
+      navigate('/');  
   }, (err) => {
       console.log(err.message);
   }).catch(err => {

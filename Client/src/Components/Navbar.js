@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router';
 import { loginContext } from "../App";
 import { useContext } from 'react';
 import { makeStyles } from '@material-ui/core';
+import { BellFill } from 'react-bootstrap-icons';
+
 
 const useStyles = makeStyles({
     button: {
@@ -15,6 +17,10 @@ const useStyles = makeStyles({
       width: '100px',
       backgroundColor: '#cb3434',
       color: 'white',
+    
+    },
+    button2: {
+      backgroundColor: '#1ebb69'
     
     },
     logo: {
@@ -49,6 +55,7 @@ const NavbarBS = () => {
             </NavDropdown>
             <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link href="/contact">Contact Us</Nav.Link>
+            <BellFill className="bell" onClick={() => navigate('/Notifications')} />
             {localStorage.getItem('accessToken') ? <Button variant="contained"  className={classes.button} onClick={() => {
                 
                 //localStorage.setItem('accessToken', null);
@@ -59,26 +66,12 @@ const NavbarBS = () => {
                  
                 } }>
                   Logout
-              </Button> : <Button  variant="contained" className={classes.button}  onClick={() => {
+              </Button> : <Button  variant="contained" className={[classes.button, classes.button2]}  onClick={() => {
               navigate('/SignIn');
             } }>
                 Login
             </Button> 
-            
-            
-            /*<Button  variant="contained"  onClick={() => {
-                    if(contextData.isLoggedin){
-                        //localStorage.removeItem('accessToken');
-                        //appel fonction logout
-                        contextData.setLoggedIn(!contextData.isLoggedin);
-                        navigate('/SignIn');
-                    }
-                    else {
-                        navigate('/SignIn');
-                    }
-                } }>
-                    {contextData.isLoggedin ? "Logout" : "Login"}
-                </Button>*/}
+            }
           </Nav>
         </Navbar.Collapse>
 

@@ -13,6 +13,7 @@ import ListInstructor from './Pages/ListInstructor';
 import ModifyInstructor from './Pages/ModifyInstructor';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
+import Notifications from './Pages/Notifications';
 
 export const loginContext = React.createContext()
 
@@ -35,6 +36,7 @@ function App() {
               <Route path="/AddInstructor" element={<AddInstructor  />}/>
               <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
               <Route exact path="/ModifyInstructor/" element={ <ModifyInstructor  />} />
+              <Route exact path="/Notifications/" element={ <Notifications  />} />
               <Route path="*" element={<NotFound  />} />
             </Routes>
           </div>

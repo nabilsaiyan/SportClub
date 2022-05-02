@@ -6,6 +6,7 @@ import cardio from '../Images/cardio.jpg';
 import swimming from '../Images/swim.jpg';
 import lifting from '../Images/lifting.jpg';
 import { makeStyles } from '@material-ui/core';
+import Notification from '../Components/Notification';
 
 const useStyles = makeStyles({
     field: {
@@ -27,7 +28,9 @@ const Home = () => {
     let classes = useStyles();
     let navigate = useNavigate();
     return (
+        
         <div className='test'>
+            <Notification/>
             <section className="main">
                 <div className="div1" >
                     <h1>IT’S ALL ABOUT WHAT YOU CAN ACHIEVE</h1>

@@ -37,3 +37,73 @@
     font-weight: 600;
     margin-top: 20px;
 }
+.main2 {
+    background-image: url(../Images/athlete.png);
+    background-size: cover;
+    height: 680px;
+    color : #fff;
+    text-align: left;
+}
+
+.main2 h1 {
+    font-size: 60px;
+    font-family: 'Oswald';
+    font-weight: 600;
+    width : 60%;
+    margin-bottom: 50px;
+}
+
+.div2 {
+    padding-top: 150px;
+    padding-left: 50px;
+}
+
+.div2 p {
+    font-size: 15px;
+    font-family: 'Rubik';
+    font-weight: 500;
+    width: 40%;
+}
+
+.div2 .button2{
+    width: 150px;
+    background-color: #e50f0f;
+    left: 0;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Oswald';
+    font-weight: 600;
+    margin-top: 50px;
+}
+.main3 {
+    height: fit-content;
+  margin: 100px;
+}
+.grid-div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color : #000;
+    text-align: left;
+}
+
+.grid-div img {
+    object-fit: fill;
+    width: 80%;
+    height: 80%;
+    border-radius: 25px;
+}
+
+.main3 h1 {
+    font-size: 30px;
+    font-family: 'Oswald';
+    font-weight: 600;
+}
+.main3 h2 {
+    font-size: 60px;
+    font-family: 'Oswald';
+    font-weight: 600;
+    text-align: left;
+}
+

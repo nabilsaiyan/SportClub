@@ -31,6 +31,7 @@ const NavbarBS = () => {
     let navigate = useNavigate();
     let contextData = useContext(loginContext);
     
+    console.log("navbar" + localStorage.getItem('accessToken'));
     return (
         <Navbar bg="light" variant="light"
         sticky="top" expand="sm" collapseOnSelect>
@@ -48,8 +49,9 @@ const NavbarBS = () => {
             </NavDropdown>
             <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link href="/contact">Contact Us</Nav.Link>
-            {contextData.isLoggedin ? <Button variant="contained"  className={classes.button} onClick={() => {
+            {localStorage.getItem('accessToken') ? <Button variant="contained"  className={classes.button} onClick={() => {
                 
+                //localStorage.setItem('accessToken', null);
                 localStorage.removeItem('accessToken');
                 //appel fonction logout
                 //contextData.setLoggedIn(true);

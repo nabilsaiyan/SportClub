@@ -19,6 +19,11 @@ namespace webapi.DataLayer
         public DbSet<Role> Roles { get; set; }
         public DbSet<Instructor> Instructor { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Day> Days { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 
 
@@ -20,14 +21,57 @@ const theme = createTheme();
 
 export default function SignUp() {
   const navigate = useNavigate();
+  let role = {};
+  useEffect(() => {
+    
+    console.log("useEffect");
+    
+
+    //// temporary
+    /*  axios.post('https://localhost:44373/api/Roles/', {
+        "name": "instructor",
+        "description": "at the gym"
+      })
+    .then(res => {
+        console.log(res);
+        
+    }, (err) => {
+        console.log(err.message);
+    }).catch(err => {
+        console.log('err:', err)
+    });
+
+      axios.post('https://localhost:44373/api/Roles/', {
+        "name": "internaute",
+        "description": "at the gym"
+      })
+    .then(res => {
+        console.log(res);
+        
+    }, (err) => {
+        console.log(err.message);
+    }).catch(err => {
+        console.log('err:', err)
+    });
+*/
+
+    //////
+
+    axios.get("https://localhost:44373/api/Roles/1" ,)
+    .then(res => {
+        role = res.data;
+        console.log(role);
+        
+    })
+    .catch(err => {
+        console.log("err")
+        console.log(err);
+    });
+}, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      login: data.get('login'),
-      password: data.get('password'),
-    });
 
     
     const data1 = {
@@ -35,7 +79,16 @@ export default function SignUp() {
       password: data.get('password'),
   }
   
-  axios.post('https://localhost:44373/api/Accounts/', data1)
+  let finalData = {
+    "login": data1.login,
+    "password": data1.password,
+    "roleId": role.roleId,
+    "role": role
+  }
+
+  console.log(finalData);
+
+  axios.post('https://localhost:44373/api/Accounts/', finalData)
   .then(res => {
       console.log(res);
       navigate('/SignIn');
@@ -86,6 +139,17 @@ let classes = useStyles();
                   label="Password"
                   type="password"
                   id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12} >
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Confirm Password"
+                  type="password"
+                  id="cPassword"
                   autoComplete="new-password"
                 />
               </Grid>

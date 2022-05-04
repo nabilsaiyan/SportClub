@@ -15,6 +15,7 @@ namespace webapi.Controllers
     public class SubscriptionsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        
 
         public SubscriptionsController(AppDbContext context)
         {
@@ -25,14 +26,14 @@ namespace webapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Subscription>>> GetSubscriptions()
         {
-            return await _context.Subscriptions.ToListAsync();
+            return await _context.Subscriptions.Include("Services.Days").ToListAsync();
         }
 
         // GET: api/Subscriptions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Subscription>> GetSubscription(int id)
         {
-            var subscription = await _context.Subscriptions.FindAsync(id);
+            var subscription = await _context.Subscriptions.Include("Services.Days").FirstOrDefaultAsync(item => item.SubscriptionId == id);
 
             if (subscription == null)
             {
@@ -103,6 +104,35 @@ namespace webapi.Controllers
         private bool SubscriptionExists(int id)
         {
             return _context.Subscriptions.Any(e => e.SubscriptionId == id);
+        }
+
+        [HttpPost("{id}/{serviceId}")]
+        public async Task<ActionResult<Subscription>> PostService(int id, int serviceId)
+        {
+            try
+            {
+                var subscription = await _context.Subscriptions.Include("Services.Days").FirstOrDefaultAsync(item => item.SubscriptionId == id);
+                
+                if(subscription == null)
+                {
+                    return BadRequest();
+                }
+
+                var service = await _context.Services.Include("Days").FirstOrDefaultAsync(s => s.ServiceId == serviceId);
+                
+                if (service == null)
+                {
+                    return BadRequest();
+                }
+                subscription.Services.Add(service);
+                await _context.SaveChangesAsync();
+                return subscription;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                 "Error adding new service");
+            }
         }
     }
 }

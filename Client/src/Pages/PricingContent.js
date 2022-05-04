@@ -79,7 +79,7 @@ const tiersInit = [
 
 
 
-const footers = [
+var footers = [
     {
         title: 'Company',
         description: ['Team', 'History', 'Contact us', 'Locations'],
@@ -103,6 +103,7 @@ const footers = [
         description: ['Privacy policy', 'Terms of use'],
     },
 ];
+footers = []
 
 function PricingContent() {
     const [tiers, setTiers] = useState(tiersInit)
@@ -175,11 +176,11 @@ function PricingContent() {
                 >
                     Pricing
                 </Typography>
-                <Typography variant="h5" align="center" color="text.secondary" component="p">
+                {/* <Typography variant="h5" align="center" color="text.secondary" component="p">
                     Quickly build an effective pricing table for your potential customers with
                     this layout. It&apos;s built with default MUI components with little
                     customization.
-                </Typography>
+                </Typography> */}
             </Container>
             {/* End hero unit */}
             <Container maxWidth="md" component="main">
@@ -278,7 +279,7 @@ function PricingContent() {
                         </Grid>
                     ))}
                 </Grid>
-                <Copyright sx={{ mt: 5 }} />
+                {/* <Copyright sx={{ mt: 5 }} /> */}
             </Container>
             {/* End footer */}
         </React.Fragment>

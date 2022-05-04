@@ -1,5 +1,5 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -55,6 +55,9 @@ const AddMaterial = () => {
 
     return ( 
         <Container size="sm"> 
+         <div className="content">
+
+         
             <h1>Add New Material</h1>
            <form onSubmit={handleSubmit}>
 
@@ -91,6 +94,7 @@ const AddMaterial = () => {
                 <Button variant="outlined" color="primary" type="submit">Add Material</Button>
 
             </form>
+            </div>
          </Container>
 
      );

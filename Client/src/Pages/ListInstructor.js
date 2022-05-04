@@ -11,7 +11,7 @@ const useStyles = makeStyles({
         fontWeight: "bold"
     },
     space: {
-        width: "120%",
+        //width: "120%",
     }
 });
 

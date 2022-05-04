@@ -1,17 +1,28 @@
 import * as React from 'react';
-import {Button,CssBaseline ,TextField , Link,Grid ,Box,Typography,Container} from '@material-ui/core';
+import {Button,CssBaseline ,TextField , Link,Grid ,Box,Typography,Container, Icon} from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { loginContext } from '../App';
+import { useEffect, useContext } from 'react';
+import logo from '../logo.png';
 
 
 
 const useStyles = makeStyles({
     field: {
-      marginTop: 20,
       marginBottom: 20,
       display: 'block'
+    },
+    buttonImage: {
+      marginTop: 20,
+    },
+    header : {
+      fontFamily : 'Rubik',
+      fontSize : '30px',
+      fontWeight : 'bold',
+      color : '#2a80cd'
     }
   })
 
@@ -19,6 +30,11 @@ const useStyles = makeStyles({
 const theme = createTheme();
 
 export default function SignIn() {
+  const contextData = useContext(loginContext);
+  useEffect(() => {
+    contextData.setLoggedIn(false)
+  });
+
   let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,10 +53,9 @@ export default function SignIn() {
   axios.post('https://localhost:44373/api/Accounts/Login', data1)
   .then(res => {
       console.log(res);
+      contextData.setLoggedIn(true)
       localStorage.setItem('accessToken', res.data)
-      navigate('/');
-
-      
+      navigate('/');  
   }, (err) => {
       console.log(err.message);
   }).catch(err => {
@@ -62,9 +77,9 @@ let classes = useStyles();
             alignItems: 'center',
           }}
         >
-          
-          <Typography component="h1" variant="h5">
-            Sign in
+          <img className={classes.buttonImage} src={logo} width="150px" height="140px" />
+          <Typography component="h1" className={classes.header} variant="h5">
+            Welcome Back !
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -92,7 +107,7 @@ let classes = useStyles();
               </Grid>
               
             </Grid>
-            <Button className={classes.field}
+            <Button className={classes.buttonImage}
               type="submit"
               fullWidth
               variant="contained"
@@ -100,7 +115,7 @@ let classes = useStyles();
             >
               Sign In
             </Button>
-            <Grid container justifyContent="flex-end" >
+            <Grid container justifyContent="flex-end" className={classes.buttonImage}>
               <Grid item>
                 <Link href="/SignUp" variant="body2">
                   Don't have Account? Sign up

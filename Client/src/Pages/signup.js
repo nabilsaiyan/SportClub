@@ -5,17 +5,25 @@ import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import logo from '../logo.png';
 
 
 
 const useStyles = makeStyles({
-    field: {
-      marginTop: 20,
-      marginBottom: 20,
-      display: 'block'
-    }
-  })
-
+  field: {
+    marginBottom: 20,
+    display: 'block'
+  },
+  buttonImage: {
+    marginTop: 20,
+  },
+  header : {
+    fontFamily : 'Rubik',
+    fontSize : '30px',
+    fontWeight : 'bold',
+    color : '#2a80cd'
+  }
+})
 
 const theme = createTheme();
 
@@ -114,9 +122,10 @@ let classes = useStyles();
             alignItems: 'center',
           }}
         >
-          
-          <Typography component="h1" variant="h5">
-            Sign up
+           <img className={classes.buttonImage} src={logo} width="150px" height="140px" />
+
+          <Typography component="h1" variant="h5" className={classes.header}>
+            Join us !
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -155,7 +164,7 @@ let classes = useStyles();
               </Grid>
               
             </Grid>
-            <Button className={classes.field}
+            <Button className={classes.buttonImage}
               type="submit"
               fullWidth
               variant="contained"
@@ -163,7 +172,7 @@ let classes = useStyles();
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end" >
+            <Grid container justifyContent="flex-end" className={classes.buttonImage}>
               <Grid item>
                 <Link href="/SignIn" variant="body2">
                   Already have an account? Sign in

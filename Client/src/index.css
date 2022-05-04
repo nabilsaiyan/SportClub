@@ -1,44 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 
-/* base styles */
+/* base styles 
 * {
-  margin: 0;
-  font-family: "Rubik";
-  color: #333;
-}
-.navbar {
-    padding: 10px;
-  display: flex;
-  align-items: center;
-  /*max-width: 900px;*/
-  background: #303A53;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
-  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+  font-family: 'Rubik';
+}
+*/
 
-
+.bell {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  transform: translateY(3%);
+  right: 150px;
+  background: #dee1e3;
+  padding: 10px;
+  border-radius: 50%;
 }
 
-.navbar h1 {
-  color: #ffffff;
-  margin-left: auto;
+.bell:hover {
+  background: #c3c7ca;
+  cursor: pointer;
 }
-.navbar .links {
-  margin-left: auto;
-  margin-right: auto;
-}
-.navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-  color: #ffffff;
-}
-.navbar a:hover {
-  color: #1949b9;
-}
-.content {
-  max-width: 600px;
-  margin: 40px auto;
+
+.notif-container {
+  margin: 5px;
+  width: 700px;
+  display: grid;
+  grid-template-columns: 95% 5%;
+  text-align: left;
   padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+
+.trash{
+  height: 40px;
+  width: 40px;
+  background: #dee1e3;
+  border-radius: 50%;
+  padding: 7px;
+}
+
+.trash:hover {
+  background: #c3c7ca;
+  cursor: pointer;
+}
+
+.notif-container h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+

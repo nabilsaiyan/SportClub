@@ -77,15 +77,24 @@
     font-weight: 600;
     margin-top: 50px;
 }
+
 .main3 {
     height: fit-content;
-  margin: 100px;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;
+    */
 }
+
+.main3 h2{
+    padding: 50px;
+}
+
 .grid-div {
     display: grid;
     grid-template-columns: 50% 50%;
     color : #000;
-    text-align: left;
+    
 }
 
 .grid-div img {

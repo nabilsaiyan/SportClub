@@ -14,6 +14,8 @@ import ModifyInstructor from './Pages/ModifyInstructor';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Notifications from './Pages/Notifications';
+import Payment from './Pages/Payment';
+import Success from './Components/Success';
 
 export const loginContext = React.createContext()
 
@@ -37,7 +39,10 @@ function App() {
               <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
               <Route exact path="/ModifyInstructor/" element={ <ModifyInstructor  />} />
               <Route exact path="/Notifications/" element={ <Notifications  />} />
+              <Route exact path="/Payment/" element={ <Payment  />} />
+              <Route exact path="/Success" element={ <Success  />} />
               <Route path="*" element={<NotFound  />} />
+              <Route path="*/*" element={<NotFound  />} />
             </Routes>
           </div>
         </div>

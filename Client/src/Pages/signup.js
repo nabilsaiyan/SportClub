@@ -36,7 +36,7 @@ export default function SignUp() {
     
 
     //// temporary
-    /*  axios.post('https://localhost:44373/api/Roles/', {
+      axios.post('https://localhost:44373/api/Roles/', {
         "name": "instructor",
         "description": "at the gym"
       })
@@ -61,7 +61,7 @@ export default function SignUp() {
     }).catch(err => {
         console.log('err:', err)
     });
-*/
+
 
     //////
 

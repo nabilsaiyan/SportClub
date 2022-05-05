@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginContext } from '../App';
 import { useEffect, useContext } from 'react';
 import logo from '../logo.png';
+import { CircularProgress } from '@material-ui/core';
 
 
 
@@ -31,33 +32,44 @@ const theme = createTheme();
 
 export default function SignIn() {
   const contextData = useContext(loginContext);
+  const [login, setLogin] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   useEffect(() => {
     contextData.setLoggedIn(false)
   });
 
   let navigate = useNavigate();
   const handleSubmit = (event) => {
+    setLoading(true);
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       login: data.get('login'),
       password: data.get('password'),
     });
-
     
     const data1 = {
       login: data.get('login'),
       password: data.get('password'),
-  }
+    }
   
   axios.post('https://localhost:44373/api/Accounts/Login', data1)
   .then(res => {
-      console.log(res);
-      contextData.setLoggedIn(true)
-      localStorage.setItem('accessToken', res.data)
-      navigate('/');  
+    console.log(res);
+    contextData.setLoggedIn(true)
+    localStorage.setItem('accessToken', res.data);
+    //console.log("testlogin", login +  login.includes('admin'));
+    if(data1.login.includes('admin')){
+      setTimeout(() => {
+        setLoading(false);
+        navigate('/Dashboard');
+      }, 2000);
+      }
+      else 
+        navigate('/');  
   }, (err) => {
       console.log(err.message);
+      setLoading(false);
   }).catch(err => {
       console.log('err:', err)
   })
@@ -114,6 +126,8 @@ let classes = useStyles();
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
+              <CircularProgress size={20} style={{marginLeft: '5px', display: loading ? 'block' : 'none' }} />
+              {/*loading ? <CircularProgress /> : null*/}
             </Button>
             <Grid container justifyContent="flex-end" className={classes.buttonImage}>
               <Grid item>

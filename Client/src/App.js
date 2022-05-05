@@ -16,6 +16,8 @@ import Home from './Components/Home';
 import Notifications from './Pages/Notifications';
 import Payment from './Pages/Payment';
 import Success from './Components/Success';
+import Failure from './Components/Failure';
+import Dashboard from './Pages/Dashboard';
 
 export const loginContext = React.createContext()
 
@@ -41,6 +43,8 @@ function App() {
               <Route exact path="/Notifications/" element={ <Notifications  />} />
               <Route exact path="/Payment/" element={ <Payment  />} />
               <Route exact path="/Success" element={ <Success  />} />
+              <Route exact path="/Failure" element={ <Failure  />} />
+              <Route exact path="/Dashboard" element={ <Dashboard  />} />
               <Route path="*" element={<NotFound  />} />
               <Route path="*/*" element={<NotFound  />} />
             </Routes>

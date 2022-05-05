@@ -91,7 +91,7 @@ namespace webapi.Controllers
                 return CreatedAtAction(nameof(GetMaterials),
                     new { id = createdMaterial.MaterialId }, createdMaterial);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "Error creating new material record");
@@ -114,7 +114,7 @@ namespace webapi.Controllers
 
                 return Ok($"Material with Id = {id} deleted");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "Error deleting material record");
@@ -137,7 +137,7 @@ namespace webapi.Controllers
 
                 return await materialsRepository.UpdateMaterial(material);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "Error updating material record");

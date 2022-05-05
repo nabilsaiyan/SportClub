@@ -24,6 +24,11 @@
   cursor: pointer;
 }
 
+.my-container {
+  display: grid;
+  place-items: center;
+}
+
 .notif-container {
   margin: 5px;
   width: 700px;

@@ -7400,19 +7400,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\houssam\\.nuget\\packages\\": {}
+    "C:\\Users\\nabil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
+      "projectUniqueName": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj",
       "projectName": "webapi",
-      "projectPath": "E:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
-      "packagesPath": "C:\\Users\\houssam\\.nuget\\packages\\",
-      "outputPath": "E:\\.Net\\SportClub\\webapi\\webapi\\obj\\",
+      "projectPath": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj",
+      "packagesPath": "C:\\Users\\nabil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\houssam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nabil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7495,7 +7495,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

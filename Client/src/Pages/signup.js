@@ -60,8 +60,8 @@ export default function SignUp() {
         console.log(err.message);
     }).catch(err => {
         console.log('err:', err)
-    });
-*/
+    });*/
+
 
     //////
 
@@ -92,6 +92,7 @@ export default function SignUp() {
     "password": data1.password,
     "roleId": role.roleId,
     "role": role
+    
   }
 
   console.log(finalData);

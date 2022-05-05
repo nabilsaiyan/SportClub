@@ -1,0 +1,12 @@
+/////ROLES
+{
+  "name": "instructor",
+  "description": "instructor"
+}
+
+{
+  "name": "internaute",
+  "description": "internaute"
+}
+
+/////

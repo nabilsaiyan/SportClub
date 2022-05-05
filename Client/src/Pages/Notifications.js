@@ -67,7 +67,7 @@ const Notifications = (props) => {
 
 
     return (
-        <Container className="container" >
+        <div className="my-container" >
             <h1>Notifications</h1>
             {notifs.map((item, index) => (
                 <div key={index} className="notif-container">
@@ -78,7 +78,7 @@ const Notifications = (props) => {
                     <p>{item.description}</p>
                 </div>
             ))} 
-        </Container>
+        </div>
 
     );
 }

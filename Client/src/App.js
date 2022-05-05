@@ -1,6 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
 import './App.css';
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
@@ -18,12 +18,11 @@ import Payment from './Pages/Payment';
 import Success from './Components/Success';
 import Failure from './Components/Failure';
 import Dashboard from './Pages/Dashboard';
+import Pricing from './Pages/PricingContent';
 
-export const loginContext = React.createContext()
+
 
 function App() {
-  const [isLoggedin, setLoggedIn] = useState('false');
-
   return (
     <loginContext.Provider value={{ isLoggedin, setLoggedIn }} >
       <BrowserRouter>
@@ -51,7 +50,7 @@ function App() {
           </div>
         </div>
     </BrowserRouter>
-  </loginContext.Provider>
+    </loginContext.Provider>
   );
 }
 

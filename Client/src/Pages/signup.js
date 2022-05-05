@@ -92,7 +92,6 @@ export default function SignUp() {
     "password": data1.password,
     "roleId": role.roleId,
     "role": role
-    
   }
 
   console.log(finalData);

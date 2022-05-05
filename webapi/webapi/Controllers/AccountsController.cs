@@ -99,7 +99,7 @@ namespace webapi.Controllers
 
         // GET: api/Accounts
         [HttpGet]
-        [Authorize(Roles="admin")]
+        //[Authorize(Roles="admin")]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
         {
             return await _context.Accounts.Include("Role").ToListAsync();

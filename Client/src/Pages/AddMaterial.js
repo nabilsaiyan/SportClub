@@ -55,6 +55,9 @@ const AddMaterial = () => {
 
     return ( 
         <Container size="sm"> 
+         <div className="content">
+
+         
             <h1>Add New Material</h1>
            <form onSubmit={handleSubmit}>
 
@@ -91,6 +94,7 @@ const AddMaterial = () => {
                 <Button variant="outlined" color="primary" type="submit">Add Material</Button>
 
             </form>
+            </div>
          </Container>
 
      );

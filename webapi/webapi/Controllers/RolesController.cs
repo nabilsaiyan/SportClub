@@ -29,10 +29,23 @@ namespace webapi.Controllers
         }
 
         // GET: api/Roles/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Role>> GetRole(int id)
         {
             var role = await _context.Roles.FindAsync(id);
+
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            return role;
+        }
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Role>> GetRole(string name)
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r=> r.Name == name);
 
             if (role == null)
             {

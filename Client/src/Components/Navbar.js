@@ -25,7 +25,8 @@ const useStyles = makeStyles({
     },
     logo: {
       marginLeft: '50px',
-    
+      fontSize: '25px',
+      fontWeight: '500',
     }
 });
 
@@ -41,9 +42,9 @@ const NavbarBS = () => {
     return (
         <Navbar bg="light" variant="light"
         sticky="top" expand="sm" collapseOnSelect>
-        <Navbar.Brand  className={classes.logo} href = '/'>
+        <Navbar.Brand  className="logo" href = '/'>
           <img src={logo} width="60px" height="50px" />{' '}
-          Gym Life
+          Daily Gym
         </Navbar.Brand>
 
         <Navbar.Toggle className="coloring" />

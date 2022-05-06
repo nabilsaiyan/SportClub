@@ -15,38 +15,48 @@ const useStyles = makeStyles({
         //width: "120%",
     }
 });
+const MINUTE_MS = 3000;
 
 var load = false;
 const Notifications = (props) => {
-    const [notifs, setNotifs] = useState([
-        {
-            "title": "NewsLetter",
-            "description": "Hello, world! This is a Newsletter notification."
-        },
-        {
-            "title": "Promotion",
-            "description": "Hello, world! This is a Promotion notification."
-        },
-        
-      ]);
+    const [notifs, setNotifs] = useState([{
+        "notificationId": 0,
+        "subject": "Loading",
+        "content": "...",
+        "read": true
+    }]);
     
     useEffect(() => {
-            console.log("useEffect");
-            console.log(props);
-            
-            axios.get("https://localhost:44373/api/Notifications",)
+        const interval = setInterval(() => {
+            console.log("called");
+            axios.get("https://localhost:44373/api/Notifications")
             .then(res => {
-                
-            })
-            .catch(err => {
-                console.log("err")
-                console.log(err);
-            });
-        
-    }, []);
-    
-    
+                console.log(res.data);
+                if(res.data.length > 0){
+                    setNotifs(res.data);
+                    res.data.forEach(item => {
+                        if(!item.read){
+                            let tmp = item;
+                            tmp.read = true;
+                            axios.put("https://localhost:44373/api/Notifications/" + item.notificationId, tmp
+                            ).then(res => {
+                                console.log(res.data);
+                            }).catch(err => {
+                                console.log(err);
+                            }   
+                            )
+                        }
+                    });
+                }
 
+            }).catch(err => {
+                console.log(err);
+            }
+            )
+        }, MINUTE_MS);
+
+        return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }, [])
     
         const classes = useStyles();
 
@@ -54,7 +64,7 @@ const Notifications = (props) => {
         console.log("id:", id)
         axios.delete("https://localhost:44373/api/Notifications/" + id).then(res => {
             console.log("res :")
-           setNotifs(notifs.filter(item => item.id !== id));
+            setNotifs(notifs.filter(item => item.id !== id));
         })
             .catch(err => {
                 console.log("err")
@@ -70,12 +80,12 @@ const Notifications = (props) => {
         <div className="my-container" >
             <h1>Notifications</h1>
             {notifs.map((item, index) => (
-                <div key={index} className="notif-container">
-                    <h1>{item.title}</h1>
-                    <Trash2Fill className="trash" onClick={(e)=>{
-                        removeItem(item.id);
+                <div key={item.notificationId} className="notif-container">
+                    <h1>{item.subject}</h1>
+                    <Trash2Fill className="trash" id={item.notificationId} onClick={(e)=>{
+                        removeItem(e.currentTarget.id);
                     }}/>
-                    <p>{item.description}</p>
+                    <p>{item.content}</p>
                 </div>
             ))} 
         </div>

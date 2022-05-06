@@ -29,9 +29,16 @@ namespace API.Controllers
 			[HttpPost("create-checkout-session")]
 		public async Task<IActionResult> CreateCheckoutSession([FromBody] CreateCheckoutSessionRequest req)
 		{
+			int i;
+			if (req.PriceId.EndsWith("HXZ"))
+				i = 1;
+			else if (req.PriceId.EndsWith("sV5"))
+				i=2;
+			else
+				i = 3;
 			var options = new SessionCreateOptions
 			{
-				SuccessUrl = "http://localhost:3000/Success",
+				SuccessUrl = "http://localhost:3000/Success/" + i,
 				CancelUrl = "http://localhost:3000/Failure",
 				PaymentMethodTypes = new List<string>
 				{

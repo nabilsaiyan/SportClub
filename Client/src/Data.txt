@@ -9,4 +9,14 @@
   "description": "internaute"
 }
 
-/////
+/////Notifications
+{
+  "subject": "NewsLetter Nabil A",
+  "content": "Gym Life is inviting you for their new newsletter",
+  "read": false
+}
+{
+  "subject": "Promotion for weekeends",
+  "content": "Gym Life is offering some promotions for you this weekend",
+  "read": false
+}

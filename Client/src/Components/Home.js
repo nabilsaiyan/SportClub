@@ -8,6 +8,7 @@ import lifting from '../Images/lifting.jpg';
 import { makeStyles } from '@material-ui/core';
 import Notification from '../Components/Notification';
 
+
 const useStyles = makeStyles({
     field: {
       marginBottom: 20,
@@ -25,6 +26,8 @@ const useStyles = makeStyles({
   })
 
 const Home = () => {
+    document.title = "Daily Gym - HomePage"
+    
     let classes = useStyles();
     let navigate = useNavigate();
     return (

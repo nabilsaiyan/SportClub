@@ -18,6 +18,7 @@ import Payment from './Pages/Payment';
 import Success from './Components/Success';
 import Failure from './Components/Failure';
 import Dashboard from './Pages/Dashboard';
+import PricingContent from './Pages/PricingContent';
 
 export const loginContext = React.createContext()
 
@@ -39,12 +40,13 @@ function App() {
               <Route path="/SignIn" element={<SignIn  />}/>
               <Route path="/AddInstructor" element={<AddInstructor  />}/>
               <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
-              <Route exact path="/ModifyInstructor/" element={ <ModifyInstructor  />} />
+              <Route exact path="/ModifyInstructor/:id" element={ <ModifyInstructor  />} />
               <Route exact path="/Notifications/" element={ <Notifications  />} />
-              <Route exact path="/Payment/" element={ <Payment  />} />
-              <Route exact path="/Success" element={ <Success  />} />
+              <Route exact path="/Payment/:id" element={ <Payment  />} />
+              <Route exact path="/Success/:id" element={ <Success  />} />
               <Route exact path="/Failure" element={ <Failure  />} />
               <Route exact path="/Dashboard" element={ <Dashboard  />} />
+              <Route exact path="/PricingContent" element={ <PricingContent  />} />
               <Route path="*" element={<NotFound  />} />
               <Route path="*/*" element={<NotFound  />} />
             </Routes>

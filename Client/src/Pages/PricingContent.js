@@ -17,7 +17,8 @@ import Container from '@material-ui/core/Container';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
-
+import '../index.css';
+import { useNavigate } from 'react-router';
 
 
 const useStyles = makeStyles({
@@ -38,39 +39,39 @@ function Copyright(props) {
 }
 
 const tiersInit = [
-    {
-        title: 'Free',
-        price: '0',
+    {   
+        id : 1,
+        title: 'Basic Plan',
+        price: '150',
         description: [
-            '10 users included',
-            '2 GB of storage',
-            'Help center access',
-            'Email support',
+            'Access to the Gym',
+            'Monitoring (1 session/week)',
         ],
         buttonText: 'Sign up for free',
         buttonVariant: 'outlined',
     },
     {
-        title: 'Pro',
+        id : 2,
+        title: 'Premuim Plan',
         subheader: 'Most popular',
-        price: '15',
+        price: '350',
         description: [
-            '20 users included',
-            '10 GB of storage',
-            'Help center access',
-            'Priority email support',
+            'Access to the Gym',
+            'Swimming Pool Access',
+            'Monitoring (3 sessions/week)',
         ],
         buttonText: 'Get started',
         buttonVariant: 'contained',
     },
     {
-        title: 'Enterprise',
-        price: '30',
+        id : 3,
+        title: 'Full-Pack Plan',
+        price: '750',
         description: [
-            '50 users included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
+            'Acces to the Gym',
+            'Swimming Pool Access',
+            'Access to the Sauna',
+            'Monitoring (unlimited)'
         ],
         buttonText: 'Contact us',
         buttonVariant: 'outlined',
@@ -79,93 +80,34 @@ const tiersInit = [
 
 
 
-var footers = [
-    {
-        title: 'Company',
-        description: ['Team', 'History', 'Contact us', 'Locations'],
-    },
-    {
-        title: 'Features',
-        description: [
-            'Cool stuff',
-            'Random feature',
-            'Team feature',
-            'Developer stuff',
-            'Another one',
-        ],
-    },
-    {
-        title: 'Resources',
-        description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    },
-    {
-        title: 'Legal',
-        description: ['Privacy policy', 'Terms of use'],
-    },
-];
-footers = []
+
 
 function PricingContent() {
     const [tiers, setTiers] = useState(tiersInit)
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    const handleSubmit = (id) => {
+        console.log(id)
+        console.log("Submitted");
+        navigate("/Payment/" + id);
+    }
+
+   /* useEffect(() => {
         axios.get("https://localhost:44373/api/Subscriptions",)
             .then(res => {
-                setTiers(res.data);
+                if(res.data.length > 0)
+                    setTiers(res.data);
             })
             .catch(err => {
                 console.log("err")
                 console.log(err);
             });
     }, []);
-
+*/
     const classes = useStyles();
     return (
         <React.Fragment className={classes.ul}>
-            {/* <createStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} /> */}
-            <CssBaseline />
-            <AppBar
-                position="static"
-                color="default"
-                elevation={0}
-                sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-            >
-                {/* <Toolbar sx={{ flexWrap: 'wrap' }}>
-                    <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-                        Company name
-                    </Typography>
-                    <nav>
-                        <Link
-                            variant="button"
-                            color="text.primary"
-                            href="#"
-                            sx={{ my: 1, mx: 1.5 }}
-                        >
-                            Features
-                        </Link>
-                        <Link
-                            variant="button"
-                            color="text.primary"
-                            href="#"
-                            sx={{ my: 1, mx: 1.5 }}
-                        >
-                            Enterprise
-                        </Link>
-                        <Link
-                            variant="button"
-                            color="text.primary"
-                            href="#"
-                            sx={{ my: 1, mx: 1.5 }}
-                        >
-                            Support
-                        </Link>
-                    </nav>
-                    <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-                        Login
-                    </Button>
-                </Toolbar> */}
-            </AppBar>
-            {/* Hero unit */}
+           
             <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
                 <Typography
                     component="h1"
@@ -174,15 +116,9 @@ function PricingContent() {
                     color="text.primary"
                     gutterBottom
                 >
-                    Pricing
+                    Subscriptions
                 </Typography>
-                {/* <Typography variant="h5" align="center" color="text.secondary" component="p">
-                    Quickly build an effective pricing table for your potential customers with
-                    this layout. It&apos;s built with default MUI components with little
-                    customization.
-                </Typography> */}
-            </Container>
-            {/* End hero unit */}
+             </Container>
             <Container maxWidth="md" component="main">
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
@@ -220,7 +156,7 @@ function PricingContent() {
                                         }}
                                     >
                                         <Typography component="h2" variant="h3" color="text.primary">
-                                            ${tier.price}
+                                            {tier.price}DH
                                         </Typography>
                                         <Typography variant="h6" color="text.secondary">
                                             /mo
@@ -240,48 +176,19 @@ function PricingContent() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth variant={'outlined'}>
-                                        <Link to="/SignUp">
-                                            {'Get started'}
-                                        </Link>
-                                    </Button>
+                                    <button id={tier.id} className="button continue" onClick={(e) => {
+                                        handleSubmit(e.target.id)
+                                        
+                                    }}>
+                                        Get Started
+                                    </button>
                                 </CardActions>
                             </Card>
                         </Grid>
                     ))}
                 </Grid>
             </Container>
-            {/* Footer */}
-            <Container
-                maxWidth="md"
-                component="footer"
-                sx={{
-                    borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-                    mt: 8,
-                    py: [3, 6],
-                }}
-            >
-                <Grid container spacing={4} justifyContent="space-evenly">
-                    {footers.map((footer) => (
-                        <Grid item xs={6} sm={3} key={footer.title}>
-                            <Typography variant="h6" color="text.primary" gutterBottom>
-                                {footer.title}
-                            </Typography>
-                            <ul>
-                                {footer.description.map((item) => (
-                                    <li key={item}>
-                                        <Link1 href="#" variant="subtitle1" color="text.secondary">
-                                            {item}
-                                        </Link1>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Grid>
-                    ))}
-                </Grid>
-                {/* <Copyright sx={{ mt: 5 }} /> */}
-            </Container>
-            {/* End footer */}
+            
         </React.Fragment>
     );
 }

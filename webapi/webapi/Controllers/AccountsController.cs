@@ -186,5 +186,63 @@ namespace webapi.Controllers
         {
             return _context.Accounts.Any(e => e.AccountId == id);
         }
+
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Account>> PostNotification(int id, Notification notification)
+        {
+            try
+            {
+                var account = await _context.Accounts.Include("Notifications").FirstOrDefaultAsync(item => item.AccountId == id);
+
+                if (account == null)
+                {
+                    return BadRequest();
+                }
+
+                //var notification = await _context.Notifications.FindAsync(notificationId);
+
+                if (notification == null)
+                {
+                    return BadRequest();
+                }
+                account.Notifications.Add(notification);
+                await _context.SaveChangesAsync();
+                return account;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                 "Error adding new Notifiation");
+            }
+        }
+
+        [HttpDelete("{id}/{notificationId}")]
+        public async Task<ActionResult<Account>> DeleteNotification(int id, int notificationId)
+        {
+            try
+            {
+                var account = await _context.Accounts.Include("Notifications").FirstOrDefaultAsync(item => item.AccountId == id);
+
+                if (account == null)
+                {
+                    return BadRequest();
+                }
+
+                var notification = await _context.Notifications.FindAsync(notificationId);
+
+                if (notification == null)
+                {
+                    return BadRequest();
+                }
+                account.Notifications.Remove(notification);
+                await _context.SaveChangesAsync();
+                return account;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                 "Error adding new notification");
+            }
+        }
     }
 }

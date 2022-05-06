@@ -25,14 +25,14 @@ namespace webapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Subscriber>>> GetSubscribers()
         {
-            return await _context.Subscribers.Include("Notifications").ToListAsync();
+            return await _context.Subscribers.ToListAsync();
         }
 
         // GET: api/Subscribers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Subscriber>> GetSubscriber(int id)
         {
-            var subscriber = await _context.Subscribers.Include("Notifications").FirstOrDefaultAsync(item => item.SubscriberId == id);
+            var subscriber = await _context.Subscribers.FirstOrDefaultAsync(item => item.SubscriberId == id);
 
             if (subscriber == null)
             {
@@ -103,64 +103,6 @@ namespace webapi.Controllers
         private bool SubscriberExists(int id)
         {
             return _context.Subscribers.Any(e => e.SubscriberId == id);
-        }
-
-        [HttpPost("{id}")]
-        public async Task<ActionResult<Subscriber>> PostNotification(int id, Notification notification)
-        {
-            try
-            {
-                var subscriber = await _context.Subscribers.Include("Notifications").FirstOrDefaultAsync(item => item.SubscriberId == id);
-
-                if (subscriber == null)
-                {
-                    return BadRequest();
-                }
-
-                //var notification = await _context.Notifications.FindAsync(notificationId);
-
-                if (notification == null)
-                {
-                    return BadRequest();
-                }
-                subscriber.Notifications.Add(notification);
-                await _context.SaveChangesAsync();
-                return subscriber;
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                 "Error adding new service");
-            }
-        }
-
-        [HttpDelete("{id}/{notificationId}")]
-        public async Task<ActionResult<Subscriber>> DeleteNotification(int id, int notificationId)
-        {
-            try
-            {
-                var subscriber = await _context.Subscribers.Include("Notifications").FirstOrDefaultAsync(item => item.SubscriberId == id);
-
-                if (subscriber == null)
-                {
-                    return BadRequest();
-                }
-
-                var notification = await _context.Notifications.FindAsync(notificationId);
-
-                if (notification == null)
-                {
-                    return BadRequest();
-                }
-                subscriber.Notifications.Remove(notification);
-                await _context.SaveChangesAsync();
-                return subscriber;
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                 "Error adding new service");
-            }
         }
     }
 }

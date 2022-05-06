@@ -38,6 +38,7 @@ E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Microsoft.VisualStudio.Web.Code
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Stripe.net.dll
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\.Net\SportClub\webapi\webapi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll

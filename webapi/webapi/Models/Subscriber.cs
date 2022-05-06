@@ -19,7 +19,6 @@ namespace webapi.Models
         public Subscription Subscription { get; set; }
         public MethodPayment Payment { get; set; }
         public DateTime ExpirationDate { get; set; }
-        public ICollection<Notification> Notifications { get; set; }
     }
 
     

@@ -29,10 +29,38 @@ namespace webapi.Controllers
         }
 
         // GET: api/Days/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Day>> GetDay(int id)
         {
             var day = await _context.Days.FindAsync(id);
+
+            if (day == null)
+            {
+                return NotFound();
+            }
+
+            return day;
+        }
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Day>> GetDay(string name)
+        {
+            var day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Friday); ;
+            if (name == "Monday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Monday);
+            else if (name == "Tuesday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Tuesday);
+            else if (name == "Wednesday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Wednesday);
+            else if (name == "Thursday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Thursday);
+            else if (name == "Friday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Friday);
+            else if (name == "Saturday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Saturday);
+            else if (name == "Sunday")
+                day = await _context.Days.FirstOrDefaultAsync(s => s.Name == DayOfTheWeek.Sunday);
+
 
             if (day == null)
             {

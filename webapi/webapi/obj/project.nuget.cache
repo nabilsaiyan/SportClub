@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "dZ8c83ppnjaaSVmvoaPOmaVuq46+K8/gTPnPi7NbxAtCM3WuSKVZffMXvftM34u0JnPGnQoxINUgvEAewr/EGg==",
   "success": true,
-  "projectFilePath": "E:\\.Net\\SportClub\\webapi\\webapi\\webapi.csproj",
+  "projectFilePath": "C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\webapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nabil\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nabil\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.16\\microsoft.aspnetcore.authentication.jwtbearer.5.0.16.nupkg.sha512",
@@ -137,12 +137,5 @@
     "C:\\Users\\nabil\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\nabil\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\nabil\\Desktop\\Cours\\Projet Tuteuré\\SportClub\\webapi\\webapi\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

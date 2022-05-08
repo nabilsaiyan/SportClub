@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import '../Css/Sidebar.css';
 
 const Dashboard = () => {
+  
+
   return (
-    <div className="not-found">
-      <h2>Payment done successfully</h2>
-      <p>Thank you for you subscription</p>
-      <Link to="/">Back to the homepage...</Link>
-    </div>
+    <div className="flex">
+      
+        </div>
   );
-}
- 
+};
 export default Dashboard;

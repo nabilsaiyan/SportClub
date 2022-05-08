@@ -20,3 +20,57 @@
   "content": "Gym Life is offering some promotions for you this weekend",
   "read": false
 }
+////Service
+{
+  "name": "bodybuilding",
+  "description": "Lifiting - Cardio",
+  "days": [
+    {
+      "name": "Monday",
+      "mording": true,
+      "evening": true
+    },
+    {
+      "name": "Wednesday",
+      "mording": true,
+      "evening": true
+    },
+    {
+      "name": "Friday",
+      "mording": true,
+      "evening": true
+    }
+  ]
+}
+{
+  "name": "swimming",
+  "description": "Swimming Pool",
+  "days": [
+    {
+      "name": "Tuesday",
+      "mording": true,
+      "evening": true
+    },
+    {
+      "name": "Thursday",
+      "mording": true,
+      "evening": true
+    },
+    {
+      "name": "Saturday",
+      "mording": true,
+      "evening": true
+    }
+  ]
+}
+{
+  "name": "Sauna",
+  "description": "Sauna",
+  "days": [
+    {
+      "name": "Sunday",
+      "mording": true,
+      "evening": true
+    }
+  ]
+}

@@ -19,6 +19,7 @@ import Success from './Components/Success';
 import Failure from './Components/Failure';
 import Dashboard from './Pages/Dashboard';
 import PricingContent from './Pages/PricingContent';
+import Init from './Components/Init';
 
 export const loginContext = React.createContext()
 
@@ -47,6 +48,7 @@ function App() {
               <Route exact path="/Failure" element={ <Failure  />} />
               <Route exact path="/Dashboard" element={ <Dashboard  />} />
               <Route exact path="/PricingContent" element={ <PricingContent  />} />
+              <Route exact path="/Init" element={ <Init  />} />
               <Route path="*" element={<NotFound  />} />
               <Route path="*/*" element={<NotFound  />} />
             </Routes>

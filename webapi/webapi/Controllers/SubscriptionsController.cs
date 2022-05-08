@@ -30,7 +30,7 @@ namespace webapi.Controllers
         }
 
         // GET: api/Subscriptions/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Subscription>> GetSubscription(int id)
         {
             var subscription = await _context.Subscriptions.Include("Services.Days").FirstOrDefaultAsync(item => item.SubscriptionId == id);
@@ -42,6 +42,20 @@ namespace webapi.Controllers
 
             return subscription;
         }
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Subscription>> GetSubscription(string name)
+        {
+            var subscription = await _context.Subscriptions.Include("Services.Days").FirstOrDefaultAsync(item => item.Title == name);
+
+            if (subscription == null)
+            {
+                return NotFound();
+            }
+
+            return subscription;
+        }
+
 
         // PUT: api/Subscriptions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -22,7 +22,16 @@ import { useNavigate } from 'react-router';
 
 
 const useStyles = makeStyles({
-    ul: { margin: 0, padding: 0, listStyle: 'none' }
+    ul: { margin: 0, padding: 0, listStyle: 'none' },
+    anime : {
+        padding: 0,
+        '&:hover': {
+            transform : 'scale(1.3)',
+            transition: 'transform 0.3s ease-out',
+            boxShadow : '0px 0px 10px rgb(23, 104, 244 ,0.5)'
+        }
+        
+    }
 });
 
 function Copyright(props) {
@@ -120,17 +129,19 @@ function PricingContent() {
                 </Typography>
              </Container>
             <Container maxWidth="md" component="main">
-                <Grid container spacing={5} alignItems="flex-end">
+                <Grid container spacing={5} alignItems="flex-end" >
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
                         <Grid
+                        
                             item
                             key={tier.title}
                             xs={12}
                             sm={tier.title === 'Enterprise' ? 12 : 6}
                             md={4}
                         >
-                            <Card>
+                            <Card
+                            className={classes.anime}>
                                 <CardHeader
                                     title={tier.title}
                                     subheader={tier.subheader}

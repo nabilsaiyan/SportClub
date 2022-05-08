@@ -94,26 +94,25 @@
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 40% 10%;
-  column-gap: 50%;
-  place-items: left;
-  align-items: left;
-  place-content: left;
-
+  grid-template-columns: repeat(2, 1fr);
+  /*grid-template-columns: 40% 10%;*/
 }
+
+
 .membership-info p {
   font-size: 15px;
   font-weight: 600;
   font-family: 'Rubik', sans-serif; 
   color: #1768f4;
+  place-self: center end;
 }
 .membership-info h2{
-  width: 100%;
   padding: 10px;
   font-size: 25px;
   font-weight: 600;
   font-family: 'Rubik', sans-serif; 
   color: #104db6;
+  place-self: start start;
 }
 .button {
   width : 100%;
@@ -127,7 +126,7 @@
 }
 
 .continue {
-  background: #1768f4;
+  background: rgb(23, 104, 244);
 }
 
 .continue:hover {

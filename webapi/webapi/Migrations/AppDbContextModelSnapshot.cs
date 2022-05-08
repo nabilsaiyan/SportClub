@@ -134,6 +134,9 @@ namespace webapi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AccountId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -143,12 +146,9 @@ namespace webapi.Migrations
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SubscriberId")
-                        .HasColumnType("int");
-
                     b.HasKey("NotificationId");
 
-                    b.HasIndex("SubscriberId");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Notifications");
                 });
@@ -284,9 +284,9 @@ namespace webapi.Migrations
 
             modelBuilder.Entity("webapi.Models.Notification", b =>
                 {
-                    b.HasOne("webapi.Models.Subscriber", null)
+                    b.HasOne("webapi.Models.Account", null)
                         .WithMany("Notifications")
-                        .HasForeignKey("SubscriberId");
+                        .HasForeignKey("AccountId");
                 });
 
             modelBuilder.Entity("webapi.Models.Subscriber", b =>
@@ -308,14 +308,14 @@ namespace webapi.Migrations
                     b.Navigation("Subscription");
                 });
 
+            modelBuilder.Entity("webapi.Models.Account", b =>
+                {
+                    b.Navigation("Notifications");
+                });
+
             modelBuilder.Entity("webapi.Models.Service", b =>
                 {
                     b.Navigation("Days");
-                });
-
-            modelBuilder.Entity("webapi.Models.Subscriber", b =>
-                {
-                    b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618
         }

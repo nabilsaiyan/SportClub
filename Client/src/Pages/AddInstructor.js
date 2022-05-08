@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 
 
 
+
 const useStyles = makeStyles({
     field: {
       marginTop: 20,
@@ -28,7 +29,7 @@ const AddInstructor = () => {
     
     console.log("useEffect");
 
-    axios.get("https://localhost:44373/api/Roles/2" ,)
+    axios.get("https://localhost:44373/api/Roles/instructor" ,)
     .then(res => {
         setRole(res.data);
         console.log(role);

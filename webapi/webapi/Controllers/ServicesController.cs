@@ -29,10 +29,23 @@ namespace webapi.Controllers
         }
 
         // GET: api/Services/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Service>> GetService(int id)
         {
             var service = await _context.Services.Include("Days").FirstOrDefaultAsync(s => s.ServiceId == id);
+
+            if (service == null)
+            {
+                return NotFound();
+            }
+
+            return service;
+        }
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Service>> GetService(string name)
+        {
+            var service = await _context.Services.Include("Days").FirstOrDefaultAsync(s => s.Name == name);
 
             if (service == null)
             {

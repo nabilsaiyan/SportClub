@@ -106,11 +106,24 @@ namespace webapi.Controllers
         }
 
         // GET: api/Accounts/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
             //var account = await _context.Accounts.FindAsync(id);
             var account = await _context.Accounts.Include("Role").FirstOrDefaultAsync(a => a.AccountId == id);
+
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return account;
+        }// GET: api/Accounts/5
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Account>> GetAccount(string name)
+        {
+            //var account = await _context.Accounts.FindAsync(id);
+            var account = await _context.Accounts.Include("Role").FirstOrDefaultAsync(a => a.Login == name);
 
             if (account == null)
             {

@@ -64,7 +64,8 @@ export default function SignUp() {
 
 
     //////
-
+    
+    
     axios.get("https://localhost:44373/api/Roles/internaute" ,)
     .then(res => {
         role = res.data;

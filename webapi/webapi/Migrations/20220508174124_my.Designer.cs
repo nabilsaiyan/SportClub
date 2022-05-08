@@ -10,7 +10,7 @@ using webapi.DataLayer;
 namespace webapi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220508154611_my")]
+    [Migration("20220508174124_my")]
     partial class my
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

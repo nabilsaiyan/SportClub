@@ -75,7 +75,7 @@ const AddInstructor = () => {
         }
 
     return ( 
-        <Container size="sm"> 
+        <div className="my-container my-container-add"> 
             <h1>Add New Instructor</h1>
            <form onSubmit={handleSubmit}>
 
@@ -111,7 +111,7 @@ const AddInstructor = () => {
                 <Button variant="outlined" color="primary" type="submit">Add Instructor</Button>
 
             </form>
-         </Container>
+         </div>
 
      );
 }

@@ -25,7 +25,7 @@ const ListMaterial = (props) => {
     }]);
     
     useEffect(() => {
-        if (!load) {
+        
             /*setMaterials([
                 {
                     "materialId": 1,
@@ -71,7 +71,7 @@ const ListMaterial = (props) => {
                 console.log("err")
                 console.log(err);
             });
-        }
+        
 
         console.log("bakkkkk");
     }, [materials]);
@@ -106,10 +106,10 @@ const ListMaterial = (props) => {
 
 
     return (
-        <Container size="sm" >
+        <div className="my-container">
             <h1>List of Materials</h1>
-            <TableContainer component={Paper} className={classes.space}>
-                <Table aria-label="simple table" >
+            <TableContainer component={Paper}  >
+                <Table  >
                     <TableHead >
                         <TableRow  >
                             <TableCell className={classes.strong}>Id</TableCell>
@@ -138,7 +138,7 @@ const ListMaterial = (props) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Container>
+        </div>
 
     );
 }

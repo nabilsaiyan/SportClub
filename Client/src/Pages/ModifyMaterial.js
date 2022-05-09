@@ -73,7 +73,7 @@ const ModifyMaterial = (props) => {
 };
 
     return ( 
-        <Container size="sm"> 
+        <div className="my-container my-container-add"> 
             <h1>Modify Material</h1>
            <form onSubmit={handleSubmit}>
 
@@ -110,7 +110,7 @@ const ModifyMaterial = (props) => {
                 <Button variant="outlined" color="primary" type="submit">Update</Button>
 
             </form>
-         </Container>
+         </div>
 
      );
 }

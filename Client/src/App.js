@@ -20,6 +20,12 @@ import Failure from './Components/Failure';
 import Dashboard from './Pages/Dashboard';
 import PricingContent from './Pages/PricingContent';
 import Init from './Components/Init';
+import AddService from './Pages/AddService';
+import ListService from './Pages/ListService';
+import ShowCalendar from './Pages/ShowCalendar';
+import AddCalendar from './Pages/AddCalendar';
+import Admin from './Pages/Admin';
+
 
 export const loginContext = React.createContext()
 
@@ -34,8 +40,13 @@ function App() {
           <div className="content">
             <Routes>
               <Route exact path="/" element={ <Home  />} /> 
+              <Route path="/Admin" element={<Admin  />} />
               <Route path="/AddMaterial" element={<AddMaterial  />} />
               <Route exact path="/ListMaterial/" element={ <ListMaterial  />} />
+              <Route exact path="/AddService/" element={ <AddService  />} />
+              <Route exact path="/AddCalendar/:id" element={ <AddCalendar  />} />
+              <Route exact path="/ListService/" element={ <ListService  />} />
+              <Route exact path="/ShowCalendar/:id" element={ <ShowCalendar  />} />
               <Route path="/ModifyMaterial/:id" element={ <ModifyMaterial  />} />
               <Route path="/SignUp" element={<SignUp  />}/>
               <Route path="/SignIn" element={<SignIn  />}/>

@@ -71,7 +71,7 @@ const ListInstructor = (props) => {
 
 
     return (
-        <Container size="sm" >
+        <div className="my-container">
             <h1>List of Instructors</h1>
             <TableContainer component={Paper} className={classes.space}>
                 <Table aria-label="simple table" >
@@ -103,7 +103,7 @@ const ListInstructor = (props) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Container>
+        </div>
 
     );
 }

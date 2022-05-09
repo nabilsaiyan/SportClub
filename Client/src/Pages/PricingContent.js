@@ -17,12 +17,11 @@ import Container from '@material-ui/core/Container';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
-import '../index.css';
 import { useNavigate } from 'react-router';
 
 
 const useStyles = makeStyles({
-    ul: { margin: 0, padding: 0, listStyle: 'none' },
+    ul: {   },
     anime : {
         padding: 0,
         '&:hover': {
@@ -34,22 +33,10 @@ const useStyles = makeStyles({
     }
 });
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link1 color="inherit" href="https://mui.com/">
-                Your Website
-            </Link1>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const tiersInit = [
     {   
-        id : 1,
+        subscriptionId : 1,
         title: 'Basic Plan',
         price: '150',
         description: [
@@ -60,7 +47,7 @@ const tiersInit = [
         buttonVariant: 'outlined',
     },
     {
-        id : 2,
+        subscriptionId : 2,
         title: 'Premuim Plan',
         subheader: 'Most popular',
         price: '350',
@@ -73,7 +60,7 @@ const tiersInit = [
         buttonVariant: 'contained',
     },
     {
-        id : 3,
+        subscriptionId : 3,
         title: 'Full-Pack Plan',
         price: '750',
         description: [
@@ -92,7 +79,7 @@ const tiersInit = [
 
 
 function PricingContent() {
-    const [tiers, setTiers] = useState(tiersInit)
+    const [tiers, setTiers] = useState([])
     const navigate = useNavigate();
 
     const handleSubmit = (id) => {
@@ -101,34 +88,26 @@ function PricingContent() {
         navigate("/Payment/" + id);
     }
 
-   /* useEffect(() => {
+    useEffect(() => {
         axios.get("https://localhost:44373/api/Subscriptions",)
             .then(res => {
                 if(res.data.length > 0)
                     setTiers(res.data);
+                else 
+                    setTiers(tiersInit);
             })
             .catch(err => {
                 console.log("err")
                 console.log(err);
             });
     }, []);
-*/
+
     const classes = useStyles();
     return (
         <React.Fragment className={classes.ul}>
            
-            <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-                <Typography
-                    component="h1"
-                    variant="h2"
-                    align="center"
-                    color="text.primary"
-                    gutterBottom
-                >
-                    Subscriptions
-                </Typography>
-             </Container>
-            <Container maxWidth="md" component="main">
+            <Container >
+            <h1>Subscriptions</h1>
                 <Grid container spacing={5} alignItems="flex-end" >
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
@@ -187,7 +166,7 @@ function PricingContent() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <button id={tier.id} className="button continue" onClick={(e) => {
+                                    <button id={tier.subscriptionId} className="button continue" onClick={(e) => {
                                         handleSubmit(e.target.id)
                                         
                                     }}>

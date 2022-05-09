@@ -76,7 +76,7 @@ const ModifyInstructor = (props) => {
     };
 
     return ( 
-        <Container size="sm"> 
+        <div className="my-container my-container-add"> 
             <h1>Modify Instructor</h1>
            <form onSubmit={handleSubmit}>
 
@@ -112,7 +112,7 @@ const ModifyInstructor = (props) => {
                 <Button variant="outlined" color="primary" type="submit">Update Instructor</Button>
 
             </form>
-         </Container>
+         </div>
 
      );
 }

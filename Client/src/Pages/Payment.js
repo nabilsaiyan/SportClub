@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate, useParams } from 'react-router-dom';
 import {Button, CircularProgress} from '@material-ui/core';
 import { makeStyles } from "@material-ui/core";
-
+import '../index.css'
 let stripePromise;
 
 const getStripe = () => {
@@ -39,6 +39,12 @@ const redirectToCheckout = async (session) => {
           backgroundColor: "#104db6",
         }
     
+    },
+    cont : {
+      display : 'flex',
+      justifyContent : 'center',
+      alignItems : 'center',
+
     }
   })
 
@@ -90,7 +96,7 @@ const Payment = () => {
            })
     }
     return (
-      <div className="cont">
+      <div className="my-container">
         <div className="membership">
           <h1>Review Membership</h1>
           <div className="membership-info">

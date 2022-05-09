@@ -58,15 +58,16 @@ export default function SignIn() {
     console.log(res);
     contextData.setLoggedIn(true)
     localStorage.setItem('accessToken', res.data);
+    localStorage.setItem('login', data1.login);
     //console.log("testlogin", login +  login.includes('admin'));
     if(data1.login.includes('admin')){
       setTimeout(() => {
         setLoading(false);
-        navigate('/Dashboard');
+        navigate('/Admin');
       }, 2000);
       }
       else 
-        navigate('/');  
+        navigate('/Dashboard');  
   }, (err) => {
       console.log(err.message);
       setLoading(false);

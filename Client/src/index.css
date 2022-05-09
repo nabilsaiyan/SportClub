@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lobster&family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
-/* base styles 
+/* base styles */
 * {
-  margin: 0 auto;
+ 
   font-family: 'Rubik';
 }
-*/
+
 
 .bell {
   position: absolute;
@@ -26,8 +26,12 @@
 }
 
 .my-container {
-  display: grid;
-  place-items: center;
+  margin: 0 auto;
+}
+
+.my-container-add{
+  width: 600px;  
+  margin-top: 50px;
 }
 
 .notif-container {

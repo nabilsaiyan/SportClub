@@ -5,21 +5,25 @@
     grid-template-columns: 20% 80%;
     height: 100%;
     width: 100%;
+    color: #003a65;
 }
 
 .content {
-    display: flex;
     height: 100%;
     width: 100%;
 }
 
 .header {
+    margin: 20px;
     height: 80px;
-    width: 100%;
+    width: 0%;
     border-top: #dbe0e1 1px solid;
-    border-bottom: #dbe0e1 1px solid;
-    align-items: left;
-    background: #003a65;
+    border-bottom: #b5bbbc 1px solid;
+    text-align: left;
+    padding: 20px;
+    font-size: 30px;
+    background: #fff;
+    color: #003a65;
 }
 
 .sidebar{
@@ -29,7 +33,7 @@
     color: #ccdae3;
     background: #084d82;
     width: 300px;
-    height: 1000px;
+    height: 688px;
     font-size: large;
 }
 
@@ -50,7 +54,7 @@
 }
 
 .user > label {
-    transform: translate(-180%, 50%);
+    transform: translate(-80px, 50%);
 }
 
 .item{
@@ -69,4 +73,38 @@
     cursor: pointer;
     font-size: 17px;
     margin-left: 20px;
+}
+
+.materials {
+    margin: 30px;
+    padding: 30px;
+    background: #eb8099;
+    border-radius: 15px;
+    height: 250px;
+    width: 350px;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 0px 10px rgba(132, 133, 137, 0.7);
+    text-align: center;
+}
+
+.m2{
+   height: 100px;
+
+}
+.materials:hover {
+    background: #003a65;
+    color: #eb8099;
+}
+.materials label {
+    cursor: pointer;
+}
+.materials .number {
+    padding: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.materials button {
+    width :300px;
 }

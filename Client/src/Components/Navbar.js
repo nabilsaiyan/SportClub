@@ -50,6 +50,8 @@ const NavbarBS = () => {
         <Navbar.Toggle className="coloring" />
         <Navbar.Collapse>
           <Nav>
+            {localStorage.getItem("login") =="admin" ? <Nav.Link href="/Admin">Dashboard</Nav.Link>: null}
+            {localStorage.getItem("login") !="admin" ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link>: null}
             <NavDropdown title="Services">
               <NavDropdown.Item href="" style={{color : 'grey'}} >NewsLetters</NavDropdown.Item>
               <NavDropdown.Item href="" style={{color : 'grey'}}>Blogs</NavDropdown.Item>
@@ -68,6 +70,7 @@ const NavbarBS = () => {
                 } }>
                   Logout
               </Button> : <Button  variant="contained" className={[classes.button, classes.button2]}  onClick={() => {
+                localStorage.clear();
               navigate('/SignIn');
             } }>
                 Login

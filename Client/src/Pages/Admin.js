@@ -50,56 +50,56 @@ const Admin = () => {
 
 
   return (
-    <div className="dashboard">
-      <div className="sidebar">
-        <div className="user">
+    <div className="dashboard1">
+      <div className="sidebar1">
+        <div className="user1">
           <label>{user}</label>
-          <FaUserCircle className="user-icon" />
+          <FaUserCircle className="user-icon1" />
         </div>
-        <div className="item" >
-          <AiFillDashboard className="margin" />
+        <div className="item1" >
+          <AiFillDashboard className="margin1" />
           <label onClick={() => {
             navigate("/Admin");
         }}>Dashboard</label>
         </div>
-        <div className="item" >
-          <AiFillDashboard className="margin" />
+        <div className="item1" >
+          <AiFillDashboard className="margin1" />
           <label onClick={() => {
             navigate("/AddMaterial");
         }}>Add New Material</label>
         </div>
-        <div className="item" >
-          <AiFillDashboard className="margin" />
+        <div className="item1" >
+          <AiFillDashboard className="margin1" />
           <label onClick={() => {
             navigate("/AddInstructor");
         }}>Add New Instructor</label>
         </div>
-        <div className="item" >
-          <AiFillDashboard className="margin" />
+        <div className="item1" >
+          <AiFillDashboard className="margin1" />
           <label onClick={() => {
             navigate("/AddService");
         }}>Add New Service</label>
         </div>
       </div>
-      <div className="content">
-        <div className="header">
+      <div className="content1">
+        <div className="header1">
           <label>Dashboard</label>
         </div>
-        <div className="materials m1" onClick={() => handleClick("/ListMaterial")}>
+        <div className="materials1 m11" onClick={() => handleClick("/ListMaterial")}>
           <label onClick={() => handleClick("/ListMaterial")}>Materials number :  </label>
-          <label onClick={() => handleClick("/ListMaterial")} className="number"> {materials}</label>
+          <label onClick={() => handleClick("/ListMaterial")} className="number1"> {materials}</label>
         </div>
-        <div className="materials m2" >
+        <div className="materials1 m21" >
           <label onClick={() => handleClick("/ListInstructor")}>Instructors number :  </label>
-          <label className="number"> {instructors}</label>
+          <label className="number1"> {instructors}</label>
         </div>
-        <div className="materials m3">
+        <div className="materials1 m31">
           <label onClick={() => handleClick("/ListService")}>Services number :  </label>
-          <label className="number"> {services}</label>
+          <label className="number1"> {services}</label>
         </div>
-        <div className="materials m4">
+        <div className="materials1 m41">
           <label onClick={() => handleClick("/PricingContent")}>Subscriptions number :  </label>
-          <label className="number"> {subscriptions}</label>
+          <label className="number1"> {subscriptions}</label>
         </div>
       </div>
    </div>

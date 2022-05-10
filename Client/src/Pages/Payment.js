@@ -4,7 +4,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate, useParams } from 'react-router-dom';
 import {Button, CircularProgress} from '@material-ui/core';
 import { makeStyles } from "@material-ui/core";
-import '../index.css'
+import '../index.css';
+
 let stripePromise;
 
 const getStripe = () => {
@@ -45,7 +46,11 @@ const redirectToCheckout = async (session) => {
       justifyContent : 'center',
       alignItems : 'center',
 
+    },
+    margin : {
+      margin : '0 auto',
     }
+
   })
 
 const Payment = () => {
@@ -96,7 +101,7 @@ const Payment = () => {
            })
     }
     return (
-      <div className="my-container">
+      
         <div className="membership">
           <h1>Review Membership</h1>
           <div className="membership-info">
@@ -117,7 +122,7 @@ const Payment = () => {
             <button className="button cancel" onClick={()=> {navigate("/PricingContent")}}>Cancel</button>
         </div>
       
-      </div>
+     
         );
         /*
         <div>

@@ -1,18 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Courgette&family=Lobster&family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
-.dashboard {
+.dashboard1 {
+    display: grid;
+    grid-template-columns: 20% 70%;
     height: 100%;
     width: 100%;
     color: #003a65;
 }
 
-.content {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
 
-.header {
+.header1 {
     margin: 20px;
     height: 80px;
     width: 0%;
@@ -25,7 +22,7 @@
     color: #003a65;
 }
 
-.sidebar{
+.sidebar1{
     cursor: pointer;
     font-family: 'Rubik', sans-serif;
     font-weight: 200;
@@ -36,15 +33,15 @@
     font-size: large;
 }
 
-.sidebar > :hover{
+.sidebar1 > :hover{
     background: #003a65;
 }
 
-.user {
+.user1 {
     height: 60px;
 }
 
-.user-icon {
+.user-icon1 {
     position: relative;
     width: 35px;
     height: 35px;
@@ -52,57 +49,62 @@
     transform: translate(80px, 35%);
 }
 
-.user > label {
+.user1 > label {
     transform: translate(-80px, 50%);
 }
 
-.item{
+.item1{
     display: flex;
     padding: 10px;
     align-items: center;
 }
 
-.margin {
+.margin1 {
     margin-left: 15px;
     height: 25px;
     width: 25px;
+    cursor: pointer;
 }
 
-.item label {
+.item1 label {
     cursor: pointer;
     font-size: 17px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
-.materials {
+.content1 {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    gap: 10px;
+    height: 100%;
+}
+.materials1 {
     margin-right :50px;
     margin-top: 150px;
     padding: 20px;
     background: #eb8099;
     border-radius: 15px;
     height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
+    width: 200px;
+    font-size: 150%;
     cursor: pointer;
-    flex-direction: column;
     box-shadow: 0 0px 10px rgba(132, 133, 137, 0.7);
 
 }
 
-.m1{
+.m11{
    
 
 }
-.materials:hover {
+.materials1:hover {
     background: #003a65;
     color: #eb8099;
 }
-.materials label {
+.materials1 label {
     cursor: pointer;
 }
-.materials .number {
+.materials1 .number1 {
     padding: 20px;
     color: #fff;
     cursor: pointer;

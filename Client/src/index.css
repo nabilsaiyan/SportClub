@@ -8,6 +8,9 @@
   font-family: 'Rubik';
 }
 
+div {
+
+}
 
 .bell {
   position: absolute;
@@ -15,9 +18,10 @@
   height: 40px;
   transform: translateY(3%);
   right: 150px;
-  background: #dee1e3;
+  background: #f5f7f8;
   padding: 10px;
   border-radius: 50%;
+  border: 1px solid #d4d9db ;
 }
 
 .bell:hover {
@@ -26,6 +30,9 @@
 }
 
 .my-container {
+  margin: 0 auto;
+}
+.this-container {
   margin: 0 auto;
 }
 
@@ -86,7 +93,8 @@
 }
 
 .membership {
-  min-width: 600px;
+  margin: 0 auto;
+  width: 600px;
   padding: 30px; 
   
 }

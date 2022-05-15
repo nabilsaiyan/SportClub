@@ -16,19 +16,18 @@ const useStyles = makeStyles({
 
 const ModifyInstructor = (props) => {
     const {id} = useParams();
+    const [speciality, setSpeciality] = useState("");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    
     useEffect(() => {
         
         axios.get("https://localhost:44373/api/Instructors/" + id,)
             .then(res => {
-               /* setMaterials(res.data);
-                console.log("res :")
-                console.log(res.data);
-                setName(res.data.name);
-                setDescription(res.data.description);
-                if(res.data == 0) 
-                    setStatus("Operational");
-                else
-                    setStatus("Defective");*/
+                console.log("res :" + res.data);
+               setLogin(res.data.login);
+               setPassword(res.data.password);
+               setSpeciality(res.data.speciality);
             })
             .catch(err => {
                 console.log("err")
@@ -37,10 +36,6 @@ const ModifyInstructor = (props) => {
     }, []);
 
     const navigate = useNavigate();
-
-    const [speciality, setSpeciality] = useState("Football");
-    const [login, setLogin] = useState("");
-    const [password, setPassword] = useState("");
 
    const classes = useStyles();
     
@@ -51,16 +46,10 @@ const ModifyInstructor = (props) => {
         const data = {
             "login": login,
             "password": password,
-            "speciality": 0
+            "speciality": speciality
         }
          
-        if(speciality == "Football")
-            data.speciality = 1;
-        else if (speciality == "Fitness")
-            data.speciality = 0;
-        else
-            data.speciality = 2;
-        axios.post('https://localhost:44373/api/Instructor/', data,
+        axios.put('https://localhost:44373/api/Instructors/' + id, data,
             /*{   headers: {
                 Authorization: "Bearer " + localStorage.getItem("accessToken")
             } }  */)
@@ -88,7 +77,7 @@ const ModifyInstructor = (props) => {
                     required
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}/>
-                <TextField  className={classes.field}
+                {/*<TextField  className={classes.field}
                     label="Password"
                     variant="outlined" 
                     color="secondary" 
@@ -96,7 +85,7 @@ const ModifyInstructor = (props) => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    />
+    />*/}
 
                 <Select  className={classes.field}
                     label="Speciality"

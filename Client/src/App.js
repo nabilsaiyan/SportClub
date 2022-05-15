@@ -23,6 +23,7 @@ import Init from './Components/Init';
 import AddService from './Pages/AddService';
 import ListService from './Pages/ListService';
 import ShowCalendar from './Pages/ShowCalendar';
+import ModifyService from './Pages/ModifyService';
 import AddCalendar from './Pages/AddCalendar';
 import Admin from './Pages/Admin';
 
@@ -46,6 +47,7 @@ function App() {
               <Route exact path="/AddService/" element={ <AddService  />} />
               <Route exact path="/AddCalendar/:id" element={ <AddCalendar  />} />
               <Route exact path="/ListService/" element={ <ListService  />} />
+              <Route exact path="/ModifyService/:id" element={ <ModifyService  />} />
               <Route exact path="/ShowCalendar/:id" element={ <ShowCalendar  />} />
               <Route path="/ModifyMaterial/:id" element={ <ModifyMaterial  />} />
               <Route path="/SignUp" element={<SignUp  />}/>

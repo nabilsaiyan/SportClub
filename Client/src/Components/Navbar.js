@@ -51,7 +51,7 @@ const NavbarBS = () => {
         <Navbar.Collapse>
           <Nav>
             {localStorage.getItem("login") =="admin" ? <Nav.Link href="/Admin">Dashboard</Nav.Link>: null}
-            {localStorage.getItem("login") !="admin" ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link>: null}
+            {localStorage.getItem("login") && localStorage.getItem("login") !="admin"  ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link>: null}
             <NavDropdown title="Services">
               <NavDropdown.Item href="" style={{color : 'grey'}} >NewsLetters</NavDropdown.Item>
               <NavDropdown.Item href="" style={{color : 'grey'}}>Blogs</NavDropdown.Item>
@@ -61,16 +61,16 @@ const NavbarBS = () => {
             <BellFill className="bell" onClick={() => navigate('/Notifications')} />
             {localStorage.getItem('accessToken') ? <Button variant="contained"  className={classes.button} onClick={() => {
                 
-                //localStorage.setItem('accessToken', null);
                 localStorage.removeItem('accessToken');
-                //appel fonction logout
-                //contextData.setLoggedIn(true);
+                localStorage.removeItem('login');
+                localStorage.clear();
+
                 navigate('/SignIn');
                  
                 } }>
                   Logout
               </Button> : <Button  variant="contained" className={[classes.button, classes.button2]}  onClick={() => {
-                localStorage.clear();
+                
               navigate('/SignIn');
             } }>
                 Login

@@ -9,14 +9,22 @@ const Success = () => {
 
   useEffect(() => {
     document.title = "Success";
-    if(id === "1")
+    if(id == "1"){
       localStorage.setItem("plan", "Basic Plan");
-    if(id === "2")
+      localStorage.setItem("planCalendar", "1");
+    }
+    else if(id == "2"){
       localStorage.setItem("plan", "Premium Plan");
-    if(id === "3")
+      localStorage.setItem("planCalendar", "2");
+}
+    else if(id == "3"){
       localStorage.setItem("plan", "Full Plan");
-    else 
+      localStorage.setItem("planCalendar", "3");
+    }
+    else {
       localStorage.setItem("plan", "Basic Plan");
+      localStorage.setItem("planCalendar", "1");
+    }
   });
   console.log(id);
   return (

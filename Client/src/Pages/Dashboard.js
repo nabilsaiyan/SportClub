@@ -4,10 +4,9 @@ import { useNavigate } from "react-router";
 import {FaUserCircle} from 'react-icons/fa';
 import '../Css/Sidebar.css';
 
-
+ 
 const Dashboard = () => {
-
-  const [user, setUser] = useState("Nabil");
+ const [user, setUser] = useState("Nabil");
   const [plan, setPlan] = useState("None");
   const navigate = useNavigate();
   useEffect(() => {
@@ -43,7 +42,7 @@ const Dashboard = () => {
         <div className="item" >
           <AiFillDashboard className="margin" />
           <label onClick={() => {
-            navigate("/ShowCalendar/1");
+            navigate("/ShowCalendar/" + + localStorage.getItem("planCalendar"));
         }}>My Calendar</label>
         </div>
       </div>
@@ -59,10 +58,10 @@ const Dashboard = () => {
                 }
           </div>
           { plan == "None" ? null : <div className="materials m2" onClick={() => {
-            navigate("/ShowCalendar/1");
+            navigate("/ShowCalendar/" + localStorage.getItem("planCalendar"));
         }}>
             <label onClick={() => {
-            navigate("/ShowCalendar/1");
+            navigate("/ShowCalendar/" + localStorage.getItem("planCalendar"));
         }}> My Calendar</label>
           </div>}
         </div>

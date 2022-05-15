@@ -2,7 +2,7 @@ import { TableRow, TableCell, TableContainer, Paper, TableBody, Table, Container
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Switch from "@material-ui/core/Switch";
 
 
@@ -62,14 +62,49 @@ const AddCalendar = () => {
             "evening": false
         }
     ]);
-
+    const {id} = useParams();
+    const [service, setService] = useState();
     const navigate = useNavigate();
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];    
+    let serv = {};
+    const handleSubmit = () => {
+        console.log("handleSubmit");
+        axios.get("https://localhost:44373/api/Services/" + id)
+            .then(res => {
+                console.log(res.data);
+                setService(res.data);
+                let serv = res.data;
+                let dataTest = [{}];
+                for (let i = 0; i < 7; i++) {
+                    if(data[i].morning === true || data[i].evening === true) {
+                        dataTest[i] = {
+                            "name" : days[i],
+                            "mording": data[i].morning,
+                            "evening": data[i].evening
+                        }
+                    }
+                }
+                let t = {
+                    "serviceId": id,
+                    "name": serv.name,
+                    "description": serv.description,
+                    "days": dataTest
+                };
+                console.log(t);
+                console.log(dataTest);
+                axios.put('https://localhost:44373/api/Services/' + id, t)
+                .then(res => {
+                    console.log(res);
+                    navigate("/ShowCalendar" + localStorage.getItem("planC"));
+                }).catch(err => {
+                    console.log(err);
+                });
+            
+            }).catch(err => {
+                console.log(err);
+            });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-       
-        }
+    }
 
     const update = (value, index) => {
         console.log(value, index);
@@ -89,7 +124,7 @@ const AddCalendar = () => {
     return ( 
         <div classNames="this-container"> 
             <h1>Set Calendar</h1>
-            <TableContainer component={Paper} className={classes.table}>
+            <TableContainer component={Paper} >
                 <Table aria-label="simple table" >
                     <TableHead >
                         <TableRow  >
@@ -117,7 +152,7 @@ const AddCalendar = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-                <button  className="button continue" style={{width : '30%'}} type="submit" onSubmit={handleSubmit}>Set Calendar</button>
+                <button  className="button continue" style={{width : '30%'}}  onClick={handleSubmit}>Set Calendar</button>
                 <button  className="button cancel" style={{width : '30%'}} onClick={() => navigate(-1)}>Cancel</button>   
         
         </div>

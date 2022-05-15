@@ -31,7 +31,7 @@ const ListService = (props) => {
                 console.log(err);
             });
         
-    }, []);
+    }, [services]);
     
     
      const classes = useStyles();
@@ -40,7 +40,7 @@ const ListService = (props) => {
         console.log("id:", id)
         axios.delete("https://localhost:44373/api/Services/" + id).then(res => {
             console.log("res :")
-            //setMaterials([...materials.filter(item => item.id !== Number(id))]);
+            setServices([...services.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
                 console.log("err")
@@ -52,7 +52,7 @@ const ListService = (props) => {
 
     const editItem = (id) => {
        console.log(props);
-       navigate('/ModifyMaterial/' + id);
+       navigate('/ModifyService/' + id);
 
     }
 

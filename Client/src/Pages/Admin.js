@@ -20,7 +20,7 @@ const Admin = () => {
 
   useEffect(() => {
     axios.get("https://localhost:44373/api/Materials").then(res => {
-      setMaterials(res.data.length);
+      setMaterials(res.data.filter(item => item.status === "Defective").length);
     }
     ).catch(err => {
       console.log('err:', err)
@@ -86,7 +86,7 @@ const Admin = () => {
           <label>Dashboard</label>
         </div>
         <div className="materials1 m11" onClick={() => handleClick("/ListMaterial")}>
-          <label onClick={() => handleClick("/ListMaterial")}>Materials number :  </label>
+          <label onClick={() => handleClick("/ListMaterial")}>Defective Materials :  </label>
           <label onClick={() => handleClick("/ListMaterial")} className="number1"> {materials}</label>
         </div>
         <div className="materials1 m21" >

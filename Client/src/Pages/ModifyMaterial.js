@@ -23,10 +23,7 @@ const ModifyMaterial = (props) => {
                 console.log(res.data);
                 setName(res.data.name);
                 setDescription(res.data.description);
-                if(res.data == 0) 
-                    setStatus("Operational");
-                else
-                    setStatus("Defective");
+                setStatus(res.data.status);
             })
             .catch(err => {
                 console.log("err")
@@ -52,13 +49,8 @@ const ModifyMaterial = (props) => {
         "materialId": materials.materialId,
         "name": name,
         "description": description,
-        "status": 1
+        "status": status
     }
-    if(status == "Operational")
-        data.status = 1;
-    else
-        data.status = 0;
-
     axios.put('https://localhost:44373/api/Materials/' + materials.materialId, data)
     .then(res => {
         console.log(res);

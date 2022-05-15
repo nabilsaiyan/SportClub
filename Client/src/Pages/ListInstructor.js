@@ -40,20 +40,18 @@ const ListInstructor = (props) => {
             console.log("err")
             console.log(err);
         });
-    }, []);
+    }, [Instructors]);
     
     
 
     
         const classes = useStyles();
 
-    const removeItem = (event) => {
-        event.preventDefault()
-        let id = event.currentTarget.id
+    const removeItem = (id) => {
         console.log("id:", id)
-        axios.delete("https://localhost:44373/api/Materials/" + id).then(res => {
+        axios.delete("https://localhost:44373/api/Instructors/" + id).then(res => {
             console.log("res :")
-            //setMaterials([...materials.filter(item => item.id !== Number(id))]);
+            setInstructors([...Instructors.filter(item => item.id !== Number(id))]);
         })
             .catch(err => {
                 console.log("err")
@@ -92,9 +90,9 @@ const ListInstructor = (props) => {
                                 <TableCell align="right">{row.account.login}</TableCell>
                                 <TableCell align="right">{row.account.password}</TableCell>
                                 <TableCell align="right">{row.speciality}</TableCell>
-                                <TableCell align="right"><Button id={row.instructorId} onClick={(e) => {
+                               {/* <TableCell align="right"><Button id={row.instructorId} onClick={(e) => {
                                     editItem(e.currentTarget.id);
-                                }}>Edit</Button></TableCell>
+                                }}>Edit</Button></TableCell>*/}
                                 <TableCell align="right"><Button id={row.instructorId} onClick={(e) => {
                                     removeItem(e.currentTarget.id);
                                 }}>Delete</Button></TableCell>

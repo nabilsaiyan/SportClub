@@ -58,7 +58,7 @@ const ListMaterial = (props) => {
                         "materialId": material.materialId,
                         "name": material.name,
                         "description": material.description,
-                        "status": (material.status == 1) ? "Operational" : "Defective"
+                        "status": material.status
                     });
                 }
                 );

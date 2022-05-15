@@ -1,10 +1,8 @@
 import { Typography, TextField, Select, MenuItem, Button, Container } from "@material-ui/core/";
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { useNavigate } from "react-router";
-
-
 
 const useStyles = makeStyles({
     field: {
@@ -15,32 +13,47 @@ const useStyles = makeStyles({
   })
 
 
-const AddMaterial = () => {
-    const [status, setStatus] = useState("Operational");
+
+const ModifyService = (props) => {
+    const {id} = useParams();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    
+    useEffect(() => {
+        
+        axios.get("https://localhost:44373/api/Services/" + id,)
+            .then(res => {
+                console.log("res :" + res.data);
+                setName(res.data.name);
+                setDescription(res.data.description);
+            })
+            .catch(err => {
+                console.log("err")
+                console.log(err);
+            });
+    }, []);
+
+    const navigate = useNavigate();
 
    const classes = useStyles();
-   let navigate = useNavigate();
-
     
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const data = {
+            "serviceId": id,
             "name": name,
-            "description": description,
-            "status": status
+            "description": description
         }
-        axios.post('https://localhost:44373/api/Materials/', data,
+         
+        axios.put('https://localhost:44373/api/Services/' + id, data,
             /*{   headers: {
                 Authorization: "Bearer " + localStorage.getItem("accessToken")
             } }  */)
         .then(res => {
             console.log(res); 
-            navigate("/ListMaterial");
+            navigate("/ListService");
             
         }, (err) => {
             console.log(err.message);
@@ -51,11 +64,11 @@ const AddMaterial = () => {
 
     return ( 
         <div className="my-container my-container-add"> 
-            <h1>Add New Material</h1>
+            <h1>Modify Service</h1>
            <form onSubmit={handleSubmit}>
 
                 <TextField  className={classes.field}
-                    label="Material Name"  
+                    label="Name"  
                     variant="outlined" 
                     color="secondary" 
                     fullWidth
@@ -63,28 +76,17 @@ const AddMaterial = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}/>
                 <TextField  className={classes.field}
-                    label="Material Description"
+                    label="Description"
                     variant="outlined" 
                     color="secondary" 
                     fullWidth
                     required
-                    multiline 
-                    minRows={5}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    />
+    />
 
-                <Select  className={classes.field}
-                    label="Status"
-                    defaultValue="Operational"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                >
-                    <MenuItem value="Operational">Operational</MenuItem>
-                    <MenuItem value="Defective">Defective</MenuItem>
-                </Select>
 
-                <Button variant="outlined" color="primary" type="submit">Add Material</Button>
+                <Button variant="outlined" color="primary" type="submit">Update Service</Button>
 
             </form>
          </div>
@@ -92,4 +94,4 @@ const AddMaterial = () => {
      );
 }
  
-export default AddMaterial
+export default ModifyService

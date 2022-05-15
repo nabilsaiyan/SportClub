@@ -85,7 +85,8 @@ function PricingContent() {
     const handleSubmit = (id) => {
         console.log(id)
         console.log("Submitted");
-        navigate("/Payment/" + id);
+        if(localStorage.getItem("login") != "admin")
+            navigate("/Payment/" + id);
     }
 
     useEffect(() => {
@@ -166,12 +167,12 @@ function PricingContent() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <button id={tier.subscriptionId} className="button continue" onClick={(e) => {
+                                    {localStorage.getItem("login") != "admin" ? <button id={tier.subscriptionId} className="button continue" onClick={(e) => {
                                         handleSubmit(e.target.id)
                                         
                                     }}>
                                         Get Started
-                                    </button>
+                                    </button> : '' }
                                 </CardActions>
                             </Card>
                         </Grid>

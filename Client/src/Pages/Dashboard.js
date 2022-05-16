@@ -2,22 +2,51 @@ import { useState, useEffect } from "react";
 import {AiFillDashboard} from 'react-icons/ai';
 import { useNavigate } from "react-router";
 import {FaUserCircle} from 'react-icons/fa';
+import {AiFillCloseCircle} from 'react-icons/ai';
 import '../Css/Sidebar.css';
-
+import '../Css/Modal.css'
+import news1 from '../Images/newsletter1.png';
+import axios from "axios";
  
 const Dashboard = () => {
  const [user, setUser] = useState("Nabil");
   const [plan, setPlan] = useState("None");
   const navigate = useNavigate();
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [style, setStyle] = useState({});
+  const [modal, setModal] = useState("");
+
+
   useEffect(() => {
     document.title = "Dashboard";
     setUser(localStorage.getItem("login"));
     if (localStorage.getItem("plan"))
       setPlan(localStorage.getItem("plan"));
-  });
+    
+    axios.get("https://localhost:44373/api/Newsletters").then(res => {
+      setImages(res.data);
+      setLoading(false);
+    }).catch(err => {
+      console.log(err);
+      setLoading(true);
+    });
+
+    }, []);
 
   const handleClick = (table) => {
     navigate(table);
+  }
+
+  const handleClickImage = (id) => {
+    console.log(id);
+    setStyle({'display': 'block'});
+    setModal(images[id].image);
+  }
+
+  const handleClose = () => {
+    setStyle({'display': 'none'});
+    setModal("");
   }
 
   return (
@@ -66,8 +95,32 @@ const Dashboard = () => {
           </div>}
         </div>
       </div>
+      { !loading ? <div className="news">
+        {images.map((item, index) => (
+          <div className="news-item">
+            <label>NewsLetter {index + 1}</label>
+            <img src={`data:image/png;base64,${item.image}`} alt="news1" id={index} onClick={(e) => handleClickImage(e.target.id)}/>
+            
+          </div>
+        )) }
+      </div> : <div className="news">
+          <div className="news-item-loading">
+            <label></label>
+            <div> </div>  
+          </div>
+          <div className="news-item-loading">
+            <label></label>
+            <div> </div>  
+          </div>
+      </div>}
       
-   </div>
+        <div id="myModal" class="modal" style={style}>
+          
+          <AiFillCloseCircle className="close1" onClick={handleClose} />
+          <img src={`data:image/png;base64,${modal}`} class="modal-content" id="img01"/>
+          <div id="caption"></div>
+        </div>
+      </div>
   );
 };
 export default Dashboard;

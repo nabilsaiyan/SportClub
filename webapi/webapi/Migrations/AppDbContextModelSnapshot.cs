@@ -127,6 +127,21 @@ namespace webapi.Migrations
                     b.ToTable("Materials");
                 });
 
+            modelBuilder.Entity("webapi.Models.Newsletter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("webapi.Models.Notification", b =>
                 {
                     b.Property<int>("NotificationId")

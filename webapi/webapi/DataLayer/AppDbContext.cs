@@ -33,6 +33,9 @@ namespace webapi.DataLayer
                     v => string.Join(',', v),
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
         }
+
+
+        public DbSet<webapi.Models.Newsletter> Image { get; set; }
     }
 
 }

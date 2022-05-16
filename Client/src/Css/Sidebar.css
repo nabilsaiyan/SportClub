@@ -2,15 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Courgette&family=Lobster&family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
 .dashboard {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 40% 40%;
+    /*grid-template-columns: repeat(3, 1fr);*/
     height: 100%;
     width: 100%;
     color: #003a65;
 }
 
 .content {
+    place-self: start start;
     height: 100%;
-    width: 100%;
+    width: auto;
 }
 
 .header {
@@ -108,3 +110,65 @@
 .materials button {
     width :300px;
 }
+
+.news {
+    margin-top: 50px;
+    margin-right: 200px;
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: auto;
+}
+
+.news-item:hover{
+    opacity: 0.7;
+}
+
+.news-item{
+    transition: 0.3s;
+    padding: 10px;
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0px 10px rgba(132, 133, 137, 0.3);
+    border-radius: 25px;
+}
+
+.news-item img{
+    place-self: center center;
+    padding: 10px;
+    cursor: pointer;
+    width : 300px;
+    height: auto;
+    border-radius: 25px;
+}
+
+
+.news-item-loading label {
+    background: #eee;
+    background: linear-gradient(100deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 25px;
+    height: 20px;
+    width: 100px;
+    animation: 1.5s shine linear infinite;
+    background-size: 200% 120%;
+
+}
+
+.news-item-loading div {
+    background: #eee;
+    height: 400px;
+    background: linear-gradient(100deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 25px;
+    margin: 10px;
+    animation: 1.5s shine linear infinite;
+    background-size: 200% 120%;
+
+}
+
+@keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+}
+

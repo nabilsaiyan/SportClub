@@ -10,7 +10,7 @@ using webapi.DataLayer;
 namespace webapi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220508174124_my")]
+    [Migration("20220516152931_my")]
     partial class my
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,21 @@ namespace webapi.Migrations
                     b.HasKey("MaterialId");
 
                     b.ToTable("Materials");
+                });
+
+            modelBuilder.Entity("webapi.Models.Newsletter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("webapi.Models.Notification", b =>

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
 
 const AddInstructor = () => {
-    const [speciality, setSpeciality] = useState("Football");
+    const [speciality, setSpeciality] = useState("Fitness");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState({});
@@ -99,13 +99,13 @@ const AddInstructor = () => {
 
                 <Select  className={classes.field}
                     label="Speciality"
-                    defaultValue="Football"
+                    defaultValue="Fitness"
                     value={speciality}
                     onChange={(e) => setSpeciality(e.target.value)}
                 >
-                    <MenuItem value="Football">Football</MenuItem>
                     <MenuItem value="Fitness">Fitness</MenuItem>
-                    <MenuItem value="Yoga">Yoga</MenuItem>
+                    <MenuItem value="Swimming">Swimming</MenuItem>
+                    <MenuItem value="Sauna">Sauna</MenuItem>
                 </Select>
 
                 <Button variant="outlined" color="primary" type="submit">Add Instructor</Button>

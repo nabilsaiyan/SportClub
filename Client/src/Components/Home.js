@@ -36,13 +36,14 @@ const Home = () => {
             <Notification/>
             <section className="main">
                 <div className="div1" >
-                    <h1>IT’S ALL ABOUT WHAT YOU CAN ACHIEVE</h1>
+                    <h3>IT’S ALL ABOUT WHAT YOU CAN ACHIEVE</h3>
+                    
                     <p>
                     Empower yourself to make the changes you need to make
                     </p>
-                    <Button className='button1' onClick={() => navigate('/SignIn')}>
+                    <button className='button1' onClick={() => navigate('/SignIn')}>
                         Join NOW!
-                    </Button>
+                    </button>
                 </div>
                 
             </section>
@@ -71,7 +72,7 @@ const Home = () => {
             </section>
             <section className="main2">
                 <div className="div2" >
-                    <h1>ABOUT GYM LIFE</h1>
+                    <h2>ABOUT GYM LIFE</h2>
                     <p> We’re not here to carry you to fitness, we’re here to motivate you to carry yourself to your goals. 
                   </p>
                   <br/>

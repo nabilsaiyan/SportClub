@@ -24,6 +24,14 @@ div {
   border: 1px solid #d4d9db ;
 }
 
+@media screen and (max-width: 47rem) {
+  .bell {
+    display: none;
+  }
+}
+  
+
+
 .bell:hover {
   background: #c3c7ca;
   cursor: pointer;

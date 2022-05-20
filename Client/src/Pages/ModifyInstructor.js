@@ -89,13 +89,13 @@ const ModifyInstructor = (props) => {
 
                 <Select  className={classes.field}
                     label="Speciality"
-                    defaultValue="Football"
+                    defaultValue="Fitness"
                     value={speciality}
                     onChange={(e) => setSpeciality(e.target.value)}
                 >
-                    <MenuItem value="Football">Football</MenuItem>
                     <MenuItem value="Fitness">Fitness</MenuItem>
-                    <MenuItem value="Yoga">Yoga</MenuItem>
+                    <MenuItem value="Swimming">Swimming</MenuItem>
+                    <MenuItem value="Sauna">Sauna</MenuItem>
                 </Select>
 
                 <Button variant="outlined" color="primary" type="submit">Update Instructor</Button>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import NotFound from './Components/NotFound';
 import AddMaterial from './Pages/AddMaterial';
@@ -26,6 +25,10 @@ import ShowCalendar from './Pages/ShowCalendar';
 import ModifyService from './Pages/ModifyService';
 import AddCalendar from './Pages/AddCalendar';
 import Admin from './Pages/Admin';
+import './index.css' 
+import PackCalendar from './Pages/PackCalendar';
+import DashInstructor from './Pages/DashInstructor';
+
 
 
 export const loginContext = React.createContext()
@@ -49,11 +52,13 @@ function App() {
               <Route exact path="/ListService/" element={ <ListService  />} />
               <Route exact path="/ModifyService/:id" element={ <ModifyService  />} />
               <Route exact path="/ShowCalendar/:id" element={ <ShowCalendar  />} />
+              <Route exact path="/PackCalendar/:id" element={ <PackCalendar  />} />
               <Route path="/ModifyMaterial/:id" element={ <ModifyMaterial  />} />
               <Route path="/SignUp" element={<SignUp  />}/>
               <Route path="/SignIn" element={<SignIn  />}/>
               <Route path="/AddInstructor" element={<AddInstructor  />}/>
               <Route exact path="/ListInstructor/" element={ <ListInstructor  />} />
+              <Route exact path="/DashInstructor/" element={ <DashInstructor  />} />
               <Route exact path="/ModifyInstructor/:id" element={ <ModifyInstructor  />} />
               <Route exact path="/Notifications/" element={ <Notifications  />} />
               <Route exact path="/Payment/:id" element={ <Payment  />} />

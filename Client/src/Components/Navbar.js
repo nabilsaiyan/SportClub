@@ -27,7 +27,13 @@ const useStyles = makeStyles({
       marginLeft: '50px',
       fontSize: '25px',
       fontWeight: '500',
+    },
+    "@media (max-width: 45rem)": {
+     button2: {
+       display: 'none'
+     }
     }
+    
 });
 
 

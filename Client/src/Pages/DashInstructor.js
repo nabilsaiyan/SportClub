@@ -11,7 +11,7 @@ import lifting from '../Images/lifting.png';
 import pack2 from '../Images/pack2.png';
 import pack3 from '../Images/pack3.png';
  
-const Dashboard = () => {
+const DashInstructor = () => {
  const [user, setUser] = useState("Nabil");
   const [plan, setPlan] = useState("None");
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="dashboard">
+    <div className="dashboard d2">
       <div className="sidebar">
         <div className="user">
           <label>{user}</label>
@@ -65,51 +65,34 @@ const Dashboard = () => {
             navigate("/Dashboard");
         }}>Dashboard</label>
         </div>
+       
         <div className="item" >
           <AiFillDashboard className="margin" />
           <label onClick={() => {
-            navigate("/PricingContent");
-        }}>Subscriptions</label>
-        </div>
-        <div className="item" >
-          <AiFillDashboard className="margin" />
-          <label onClick={() => {
-            navigate("/PackCalendar/" + + localStorage.getItem("planCalendar"));
+              axios.get("https://localhost:44373/api/Instructors/" + localStorage.getItem("login")).then(res => {
+                console.log(res);
+                if(res.data.speciality == "Fitness")
+                    navigate("/ShowCalendar/1");
+                else if(res.data.speciality == "Swimming")
+                    navigate("/ShowCalendar/2");
+                else if(res.data.speciality == "Sauna")
+                    navigate("/ShowCalendar/3");
+          }).catch(err => {
+            console.log(err);
+          });
+            
         }}>My Calendar</label>
-        </div>
-      </div>
-      <div className="content">
-        <div className="header">
-          <label>Dashboard</label>
-          <div className="materials m1" >
-            <label >Subscription Plan :  </label>
-            <label className="number"> {plan}</label>
-            {localStorage.getItem("plan") == "Basic Plan" ? <img src={lifting} className="" /> : null}
-            {localStorage.getItem("plan") == "Premium Plan" ? <img src={pack2} className="" /> : null}
-            {localStorage.getItem("plan") == "Full Plan" ? <img src={pack3} className="" /> : null}
-            {plan != "None" ? null : <button className="btn btn-primary" onClick={() => {
-              navigate("/PricingContent");
-            }}>Subscribe Now!</button>
-                }
-          </div>
-          {/* plan == "None" ? null : <div className="materials m2" onClick={() => {
-            navigate("/ShowCalendar/" + localStorage.getItem("planCalendar"));
-        }}>
-            <label onClick={() => {
-            navigate("/ShowCalendar/" + localStorage.getItem("planCalendar"));
-        }}> My Calendar</label>
-      </div>*/}
         </div>
       </div>
       { !loading ? <div className="news">
         {images.map((item, index) => (
-          <div className="news-item">
+          <div className="news-item ns2">
             <label>NewsLetter {index + 1}</label>
             <img src={`data:image/png;base64,${item.image}`} alt="news1" id={index} onClick={(e) => handleClickImage(e.target.id)}/>
             
           </div>
         )) }
-      </div> : <div className="news">
+      </div> : <div className="news ns2">
           <div className="news-item-loading">
             <label></label>
             <div> </div>  
@@ -129,4 +112,4 @@ const Dashboard = () => {
       </div>
   );
 };
-export default Dashboard;
+export default DashInstructor;

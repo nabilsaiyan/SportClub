@@ -7,8 +7,8 @@ namespace webapi.Models
 {
     public enum Speciality
     {
-        Football,
         Fitness,
-        Yoga
+        Swimming,
+        Sauna
     }
 }

@@ -1,89 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rubik:wght@500&display=swap');
-.main {
-    background-image: url(../Images/bodybuilder.png);
-    background-size: cover;
-    height: 680px;
-    color : #fff;
+
+.test{
     text-align: left;
 }
+.main {
+    display: grid;
+    background-image: url(../Images/bodybuilder.png);
+    background-size: cover;
+    color : #fff;
+    padding-top: 10rem;
+}
 
-.main h1 {
-    font-size: 90px;
+.main h3 {
+    margin: 0.5rem;
+    text-align: left;
+    font-size: 5rem;
     font-family: 'Oswald';
     font-weight: 600;
-    width : 60%;
+    max-width : 60%;
 }
 
 .div1 {
-    padding-top: 280px;
-    padding-left: 50px;
+    margin: 3rem;
 }
 
 .div1 p {
-    font-size: 20px;
+    font-size: 2rem;
     font-family: 'Rubik';
     font-weight: 500;
+    margin-top: 1rem;
 }
 
 .div1 .button1{
-    width: 150px;
+    margin-top: 2rem;
     background-color: #e50f0f;
-    left: 0;
     border: none;
-    padding: 10px;
+    padding: 1rem;
     color: #fff;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: 'Oswald';
     font-weight: 600;
-    margin-top: 20px;
+    border-radius: 15px;
+    transition: ease-in-out 0.3s;
+}
+.div1 .button1:hover{
+    opacity: 0.8;
+    transform : scale(1.1);
 }
 .main2 {
     background-image: url(../Images/athlete.png);
     background-size: cover;
-    height: 680px;
+    min-height: 680px;
     color : #fff;
-    text-align: left;
 }
 
-.main2 h1 {
-    font-size: 60px;
+.main2 h2 {
+    text-align: left;
+    font-size: 4rem;
     font-family: 'Oswald';
     font-weight: 600;
-    width : 60%;
-    margin-bottom: 50px;
+    margin-bottom: 4rem;
 }
 
 .div2 {
-    padding-top: 150px;
-    padding-left: 50px;
+    padding : 10rem 2rem;
 }
 
 .div2 p {
-    font-size: 15px;
+    font-size: 1rem;
     font-family: 'Rubik';
     font-weight: 500;
-    width: 40%;
+    max-width: 40rem;
 }
 
 .div2 .button2{
-    width: 150px;
+    margin-top: 2rem;
     background-color: #e50f0f;
-    left: 0;
     border: none;
-    padding: 10px;
+    padding: 1rem;
     color: #fff;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-family: 'Oswald';
     font-weight: 600;
-    margin-top: 50px;
+    border-radius: 15px;
+    transition: ease-in-out 0.3s;
+}
+
+.div2 .button2:hover{
+    opacity: 0.8;
+    transform : scale(1.1);
 }
 
 .main3 {
-    height: fit-content;
-    /*display: flex;
-    align-items: center;
-    justify-content: center;
-    */
+    
 }
 
 .main3 h2{
@@ -91,17 +100,18 @@
 }
 
 .grid-div {
+    text-align: center;
     display: grid;
-    grid-template-columns: 50% 50%;
     color : #000;
     
 }
 
 .grid-div img {
-    object-fit: fill;
-    width: 80%;
-    height: 80%;
+    margin: 2rem;
     border-radius: 25px;
+    max-height: 20rem;
+    max-width: 40rem;
+    object-fit: cover;
 }
 
 .main3 h1 {
@@ -116,3 +126,8 @@
     text-align: left;
 }
 
+@media screen and (min-width: 60rem) {
+    .grid-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

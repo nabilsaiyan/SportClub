@@ -29,10 +29,22 @@ namespace webapi.Controllers
         }
 
         // GET: api/Instructors/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Instructor>> GetInstructor(int id)
         {
             var instructor = await _context.Instructor.FindAsync(id);
+
+            if (instructor == null)
+            {
+                return NotFound();
+            }
+
+            return instructor;
+        }
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Instructor>> GetInstructor(string name)
+        {
+            var instructor = await _context.Instructor.Include("Account").FirstOrDefaultAsync(s => s.Account.Login == name);
 
             if (instructor == null)
             {

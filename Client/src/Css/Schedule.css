@@ -1,24 +1,35 @@
 
+.my-container-grids{
+    display: grid;
+    justify-items: center;
+    row-gap: 5px;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    padding: 0.5em;
+}
+
 .schedule-container {
     border-top-left-radius: 10px;
     color: rgb(255, 255, 255);
-    margin: 0 10px;
-    padding: 10px;
+    margin: 0 5px;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(8, 120px);
+    gap: 5px;
+    padding: 5px;
 }
 
 .schedule-container-large {
     border-bottom-left-radius: 10px;
     color: rgb(255, 255, 255);
     margin: 0 10px;
-    padding: 10px;
+    padding: 5px;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 120px);
     grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
-    height: 500px;
+    gap: 5px;
 }
 
 .schedule-day {
@@ -32,20 +43,25 @@
 }
 
 .schedule-time {
-    background-color: #1eccba;
+    background-color: #2155CD;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     row-gap: 10px;
     column-gap: 2px;
     font-size: 20px;
-    line-height: 200px;
+    line-height: 100px;
+    width: auto;
 }
 
 .true {
-    line-height: 200px;
-    background-color: rgb(48, 223, 123);
+    line-height: 100px;
+    background-color: rgb(46, 144, 237);
+    width: auto;
+
 }
 
 .false {
-    background-color: #ef5151;
+    background-color: #6ca4e8;
+    width: auto;
+
 }

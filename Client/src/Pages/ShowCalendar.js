@@ -44,6 +44,13 @@ const ShowCalendar = (props) => {
 
     useEffect(() => {
             console.log("useEffect 1********************************************************", Math.floor(Math.random() * 200));
+            /*        let name;
+            if(Number(id) == 1)
+                name = "bodybuilding";
+            else if(Number(id) == 2)
+                name = "swimming";
+            else if(Number(id) == 3)
+                name = "sauna";*/
             axios.get("https://localhost:44373/api/Services/" + id,)
             .then(res => {
                 console.log("this is service get", services);
@@ -146,6 +153,7 @@ const ShowCalendar = (props) => {
 
 const removeItem = (id) => {
     console.log("id:", id)
+    
         axios.delete("https://localhost:44373/api/Services/" + id).then(res => {
             console.log("res :")
              //setMaterials([...materials.filter(item => item.id !== Number(id))]);

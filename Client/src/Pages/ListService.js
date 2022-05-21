@@ -22,7 +22,7 @@ const ListService = (props) => {
             console.log("useEffect");
             console.log(props);
             
-            axios.get("https://localhost:44373/api/Services",)
+            axios.get("https://localhost:44373/api/Services")
             .then(res => {
                 setServices(res.data);
             })
@@ -79,7 +79,15 @@ const ListService = (props) => {
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.description}</TableCell>
                                 <TableCell align="right"><Button id={row.serviceId} onClick={(e) => {
-                                    navigate('/ShowCalendar/' + e.currentTarget.id)
+                                    /*let name;
+                                    console.log("*********" + e.currentTarget.value);
+                                    {if(e.currentTarget.value == "bodybuilding") 
+                                        name = "bodybuilding";
+                                    else if(e.currentTarget.value == "swimming") 
+                                        name = "swimming";
+                                    else if(e.currentTarget.value == "sauna") 
+                                        name = "sauna";*/
+                                    navigate('/ShowCalendar/' + e.currentTarget.id);
                                 }}>Show Calendar</Button></TableCell>
                                 <TableCell align="right"><Button id={row.serviceId} onClick={(e) => {
                                     editItem(e.currentTarget.id);

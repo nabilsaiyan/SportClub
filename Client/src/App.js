@@ -1,3 +1,5 @@
+import Home from './Components/Home';
+import './index.css' 
 import React from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -11,7 +13,6 @@ import AddInstructor from './Pages/AddInstructor';
 import ListInstructor from './Pages/ListInstructor';
 import ModifyInstructor from './Pages/ModifyInstructor';
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
 import Notifications from './Pages/Notifications';
 import Payment from './Pages/Payment';
 import Success from './Components/Success';
@@ -25,9 +26,9 @@ import ShowCalendar from './Pages/ShowCalendar';
 import ModifyService from './Pages/ModifyService';
 import AddCalendar from './Pages/AddCalendar';
 import Admin from './Pages/Admin';
-import './index.css' 
 import PackCalendar from './Pages/PackCalendar';
 import DashInstructor from './Pages/DashInstructor';
+import './App.css';
 
 
 

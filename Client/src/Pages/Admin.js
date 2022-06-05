@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import '../Css/Admin.css';
 import {AiFillDashboard} from 'react-icons/ai';
 import { useNavigate } from "react-router";
-import {FaUserCircle} from 'react-icons/fa';
+import {FaUserCircle, FaDumbbell, FaChalkboardTeacher, FaSwimmer} from 'react-icons/fa';
 import axios from "axios";
 
 
@@ -63,19 +63,19 @@ const Admin = () => {
         }}>Dashboard</label>
         </div>
         <div className="item1" >
-          <AiFillDashboard className="margin1" />
+          <FaDumbbell className="margin1" />
           <label onClick={() => {
             navigate("/AddMaterial");
         }}>Add New Material</label>
         </div>
         <div className="item1" >
-          <AiFillDashboard className="margin1" />
+          <FaChalkboardTeacher className="margin1" />
           <label onClick={() => {
             navigate("/AddInstructor");
         }}>Add New Instructor</label>
         </div>
         <div className="item1" >
-          <AiFillDashboard className="margin1" />
+          <FaSwimmer className="margin1" />
           <label onClick={() => {
             navigate("/AddService");
         }}>Add New Service</label>

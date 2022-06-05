@@ -28,6 +28,8 @@ import AddCalendar from './Pages/AddCalendar';
 import Admin from './Pages/Admin';
 import PackCalendar from './Pages/PackCalendar';
 import DashInstructor from './Pages/DashInstructor';
+import About from './Components/About';
+import ContactUs from './Components/ContactUs';
 import './App.css';
 
 
@@ -68,6 +70,8 @@ function App() {
               <Route exact path="/Dashboard" element={ <Dashboard  />} />
               <Route exact path="/PricingContent" element={ <PricingContent  />} />
               <Route exact path="/Init" element={ <Init  />} />
+              <Route exact path="/Contact" element={ <ContactUs  />} />
+              <Route exact path="/About" element={ <About  />} />
               <Route path="*" element={<NotFound  />} />
               <Route path="*/*" element={<NotFound  />} />
             </Routes>

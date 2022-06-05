@@ -75,27 +75,29 @@ const AddCalendar = () => {
                 setService(res.data);
                 let serv = res.data;
                 let dataTest = [{}];
+                let ind = 0;
                 for (let i = 0; i < 7; i++) {
                     if(data[i].morning === true || data[i].evening === true) {
-                        dataTest[i] = {
+                        dataTest[ind] = {
                             "name" : days[i],
                             "mording": data[i].morning,
                             "evening": data[i].evening
                         }
+                        ind++;
                     }
                 }
-                let t = {
+                /*let t = {
                     "serviceId": id,
                     "name": serv.name,
                     "description": serv.description,
                     "days": dataTest
-                };
-                console.log(t);
+                };*/
+                //console.log(t);
                 console.log(dataTest);
-                axios.put('https://localhost:44373/api/Services/' + id, dataTest)
+                axios.post('https://localhost:44373/api/Services/TimeTable/' + id, dataTest)
                 .then(res => {
                     console.log(res);
-                    navigate("/ShowCalendar" + localStorage.getItem("planC"));
+                    navigate("/ShowCalendar/" + id);
                 }).catch(err => {
                     console.log(err);
                 });

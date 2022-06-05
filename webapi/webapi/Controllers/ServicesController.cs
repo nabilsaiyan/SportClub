@@ -41,7 +41,31 @@ namespace webapi.Controllers
 
             return service;
         }
-
+        //houssamm
+        [HttpPost("TimeTable/{id}")]
+        public async Task<ActionResult<Service>> PostDays(int id, List<Day> days)
+        {
+            try
+            {
+                Service service = await _context.Services.Include("Days").FirstOrDefaultAsync(item => item.ServiceId == id);
+                if (service == null)
+                {
+                    return BadRequest();
+                }
+                foreach (Day day in service.Days)
+                {
+                    _context.Days.Remove(day);
+                }
+                service.Days = days;
+                await _context.SaveChangesAsync();
+                return service;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                  "Error adding new days");
+            }
+        }
         [HttpGet("{name}")]
         public async Task<ActionResult<Service>> GetService(string name)
         {

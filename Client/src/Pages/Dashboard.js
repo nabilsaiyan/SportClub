@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import {AiFillDashboard} from 'react-icons/ai';
 import { useNavigate } from "react-router";
-import {FaUserCircle} from 'react-icons/fa';
+import {FaUserCircle, FaCalendarCheck} from 'react-icons/fa';
 import {AiFillCloseCircle} from 'react-icons/ai';
+import {GiShieldEchoes} from 'react-icons/gi';
 import '../Css/Sidebar.css';
 import '../Css/Modal.css'
 import news1 from '../Images/newsletter1.png';
@@ -34,7 +35,21 @@ const Dashboard = () => {
       console.log(err);
       setLoading(true);
     });
-    
+    axios.get("https://localhost:44373/api/Subscribers/Subscription/" + localStorage.getItem("login")).then(res => {
+      localStorage.setItem("plan", res.data.title);
+      setPlan(localStorage.getItem("plan"));
+      if(res.data.title === "Basic"){
+        localStorage.setItem("planCalendar", "1");
+      }
+      else if(res.data.title === "Premuim"){
+        localStorage.setItem("planCalendar", "2");
+      }
+      else if(res.data.title === "Full"){
+        localStorage.setItem("planCalendar", "3");
+      }
+    }).catch(err => {
+      console.log(err);
+    });
     }, []);
 
   const handleClick = (table) => {
@@ -66,15 +81,15 @@ const Dashboard = () => {
         }}>Dashboard</label>
         </div>
         <div className="item" >
-          <AiFillDashboard className="margin" />
+          <GiShieldEchoes className="margin" />
           <label onClick={() => {
             navigate("/PricingContent");
         }}>Subscriptions</label>
         </div>
         <div className="item" >
-          <AiFillDashboard className="margin" />
+          <FaCalendarCheck className="margin" />
           <label onClick={() => {
-            navigate("/PackCalendar/" + + localStorage.getItem("planCalendar"));
+            navigate("/PackCalendar/" + localStorage.getItem("planCalendar"));
         }}>My Calendar</label>
         </div>
       </div>
@@ -85,7 +100,7 @@ const Dashboard = () => {
             <label >Subscription Plan :  </label>
             <label className="number"> {plan}</label>
             {localStorage.getItem("plan") == "Basic" ? <img src={lifting} className="" /> : null}
-            {localStorage.getItem("plan") == "Premium" ? <img src={pack2} className="" /> : null}
+            {localStorage.getItem("plan") == "Premuim" ? <img src={pack2} className="" /> : null}
             {localStorage.getItem("plan") == "Full" ? <img src={pack3} className="" /> : null}
             {plan != "None" ? null : <button className="btn btn-primary" onClick={() => {
               navigate("/PricingContent");

@@ -57,14 +57,15 @@ const NavbarBS = () => {
         <Navbar.Collapse>
           <Nav>
             {localStorage.getItem("login") =="admin" ? <Nav.Link href="/Admin">Dashboard</Nav.Link>: null}
-            {localStorage.getItem("login") && localStorage.getItem("login") !="admin"  ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link>: null}
-            <NavDropdown title="Services">
+            {localStorage.getItem("login") && localStorage.getItem("login") !="admin" && !localStorage.getItem("login").includes("inst")   ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link>: null}
+            {localStorage.getItem("login") && localStorage.getItem("login") !="admin" && localStorage.getItem("login").includes("inst")  ? <Nav.Link href="/DashInstructor">Dashboard</Nav.Link>: null}
+            {/*<NavDropdown title="Services">
               <NavDropdown.Item href="" style={{color : 'grey'}} >NewsLetters</NavDropdown.Item>
               <NavDropdown.Item href="" style={{color : 'grey'}}>Blogs</NavDropdown.Item>
-            </NavDropdown>
+    </NavDropdown>*/}
             <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link href="/contact">Contact Us</Nav.Link>
-            <BellFill className="bell" onClick={() => navigate('/Notifications')} />
+            {localStorage.getItem("login") ? <BellFill className="bell" onClick={() => navigate('/Notifications')} /> : null}
             {localStorage.getItem('accessToken') ? <Button variant="contained"  className={classes.button} onClick={() => {
                 
                 localStorage.removeItem('accessToken');

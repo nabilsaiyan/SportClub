@@ -28,6 +28,27 @@ namespace webapi.Controllers
             return await _context.Subscribers.ToListAsync();
         }
 
+        //houssam
+        [HttpGet("Subscription/{login}")]
+        public async Task<ActionResult<Subscription>> GetSubscription(string login)
+        {
+            try
+            {
+                Subscriber subscriber = await _context.Subscribers.Include("Account").Include("Subscription").Include("Subscription.Services").FirstOrDefaultAsync(item => item.Account.Login == login);
+                if (subscriber == null)
+                {
+                    return BadRequest();
+                }
+                return subscriber.Subscription;
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                 "Error searching subscription for user " + login);
+            }
+        }
+
         // GET: api/Subscribers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Subscriber>> GetSubscriber(int id)

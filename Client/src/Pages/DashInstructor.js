@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {AiFillDashboard} from 'react-icons/ai';
 import { useNavigate } from "react-router";
-import {FaUserCircle} from 'react-icons/fa';
+import {FaUserCircle, FaCalendarCheck} from 'react-icons/fa';
 import {AiFillCloseCircle} from 'react-icons/ai';
 import '../Css/Sidebar.css';
 import '../Css/Modal.css'
@@ -60,9 +60,9 @@ const DashInstructor = () => {
           <FaUserCircle className="user-icon" />
         </div>
         <div className="item" >
-          <AiFillDashboard className="margin" />
+          <FaCalendarCheck className="margin" />
           <label onClick={() => {
-            navigate("/Dashboard");
+            navigate("/DashInstructor");
         }}>Dashboard</label>
         </div>
        

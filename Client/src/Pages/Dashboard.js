@@ -34,7 +34,7 @@ const Dashboard = () => {
       console.log(err);
       setLoading(true);
     });
-
+    
     }, []);
 
   const handleClick = (table) => {
@@ -84,9 +84,9 @@ const Dashboard = () => {
           <div className="materials m1" >
             <label >Subscription Plan :  </label>
             <label className="number"> {plan}</label>
-            {localStorage.getItem("plan") == "Basic Plan" ? <img src={lifting} className="" /> : null}
-            {localStorage.getItem("plan") == "Premium Plan" ? <img src={pack2} className="" /> : null}
-            {localStorage.getItem("plan") == "Full Plan" ? <img src={pack3} className="" /> : null}
+            {localStorage.getItem("plan") == "Basic" ? <img src={lifting} className="" /> : null}
+            {localStorage.getItem("plan") == "Premium" ? <img src={pack2} className="" /> : null}
+            {localStorage.getItem("plan") == "Full" ? <img src={pack3} className="" /> : null}
             {plan != "None" ? null : <button className="btn btn-primary" onClick={() => {
               navigate("/PricingContent");
             }}>Subscribe Now!</button>

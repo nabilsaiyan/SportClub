@@ -92,7 +92,7 @@ const AddCalendar = () => {
                 };
                 console.log(t);
                 console.log(dataTest);
-                axios.put('https://localhost:44373/api/Services/' + id, t)
+                axios.put('https://localhost:44373/api/Services/' + id, dataTest)
                 .then(res => {
                     console.log(res);
                     navigate("/ShowCalendar" + localStorage.getItem("planC"));
@@ -122,7 +122,8 @@ const AddCalendar = () => {
     }
 
     return ( 
-        <div classNames="this-container"> 
+        <div style={{ display: 'grid',
+        justifyItems: 'center', margin : ' 0 200px'}}> 
             <h1>Set Calendar</h1>
             <TableContainer component={Paper} >
                 <Table aria-label="simple table" >
@@ -152,8 +153,10 @@ const AddCalendar = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-                <button  className="button continue" style={{width : '30%'}}  onClick={handleSubmit}>Set Calendar</button>
-                <button  className="button cancel" style={{width : '30%'}} onClick={() => navigate(-1)}>Cancel</button>   
+            <div style={{display : 'flex', width: '500px'}}>
+                <button  className="button continue"  onClick={handleSubmit}>Set Calendar</button>
+                <button  className="button cancel"  onClick={() => navigate(-1)}>Cancel</button>   
+            </div>
         
         </div>
 

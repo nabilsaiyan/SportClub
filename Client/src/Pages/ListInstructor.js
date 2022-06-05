@@ -69,7 +69,7 @@ const ListInstructor = (props) => {
 
 
     return (
-        <div className="my-container">
+        <div className="my-container" style={{ margin : ' 0 200px'}}>
             <h1>List of Instructors</h1>
             <TableContainer component={Paper} className={classes.space}>
                 <Table aria-label="simple table" >

@@ -106,7 +106,7 @@ const ListMaterial = (props) => {
 
 
     return (
-        <div className="my-container">
+        <div className="my-container" style={{ margin : ' 0 200px'}}>
             <h1>List of Materials</h1>
             <TableContainer component={Paper}  >
                 <Table  >
